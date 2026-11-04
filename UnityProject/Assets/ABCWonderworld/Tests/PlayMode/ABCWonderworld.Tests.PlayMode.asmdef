@@ -1,0 +1,10 @@
+{
+  "name": "ABCWonderworld.Tests.PlayMode",
+  "rootNamespace": "ABCWonderworld.Tests",
+  "references": ["ABCWonderworld.Runtime", "Unity.InputSystem", "UnityEngine.UI", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
+  "includePlatforms": [],
+  "overrideReferences": true,
+  "precompiledReferences": ["nunit.framework.dll"],
+  "autoReferenced": false,
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"]
+}

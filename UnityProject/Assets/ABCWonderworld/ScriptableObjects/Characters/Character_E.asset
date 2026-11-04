@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efd79472ee2bf09848becb1a38ed5f, type: 3}
+  m_Name: Character_E
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.CharacterDefinition
+  id: character_e
+  displayName: Ellie Elephant
+  letterId: letter_e
+  personality: Gentle and caring
+  themeObject: Elephant
+  primaryColor: {r: 0.56078434, g: 0.65882355, b: 0.84705883, a: 1}
+  accentColor: {r: 1, g: 0.7137255, b: 0.7882353, a: 1}
+  prefab: {fileID: 1709640635659751028, guid: 293f9032a0474caea8665bab4ac02641, type: 3}
+  portrait: {fileID: 21300000, guid: 827d38f0f5a3755bca367c501c709e60, type: 3}
+  introAudioKey: letter.e.intro
+  artStatus: 1

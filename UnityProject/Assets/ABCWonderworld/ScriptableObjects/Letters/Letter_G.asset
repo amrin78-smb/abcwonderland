@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_G
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_g
+  upper: 71
+  lower: 103
+  displayName: G
+  spokenName: Jee
+  phonemeDisplay: /g/
+  phonemeIpa: "\u0261"
+  soundHint: g, as in goat
+  soundNote: "Hard G (/g/) is the beginner sound. 'Giraffe' begins with soft G (/d\u0292/):
+    it is shown as a G word but never used to teach the /g/ sound."
+  characterId: character_g
+  worldId: world_bubble_bay
+  vocabulary:
+  - {fileID: 11400000, guid: ca9646aa335566378992944a0207bdac, type: 2}
+  - {fileID: 11400000, guid: c1c1b0cabae2744e5b8fe1a643bd1349, type: 2}
+  - {fileID: 11400000, guid: 21d1868593347b1e4a2b39d2a5c6e886, type: 2}
+  upperTracing: {fileID: 11400000, guid: 18a6f1890c16139098f4b0f450a823a2, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 881773d10275da7f893cf77e5f235b9b, type: 2}
+  adventure: {fileID: 11400000, guid: e3e95d36ec7129dfe971110367c0b341, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.g.name
+  phonemeAudioKey: letter.g.sound
+  introAudioKey: letter.g.intro

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_R
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_r
+  upper: 82
+  lower: 114
+  displayName: R
+  spokenName: Ar
+  phonemeDisplay: /r/
+  phonemeIpa: "\u0279"
+  soundHint: r, as in rabbit
+  soundNote: 
+  characterId: character_r
+  worldId: world_dino_jungle
+  vocabulary:
+  - {fileID: 11400000, guid: a00901b9bed4ec2fabaebd062ce7a0cb, type: 2}
+  - {fileID: 11400000, guid: b5708e6d7a1c1849f89c3e2b4d4be08b, type: 2}
+  - {fileID: 11400000, guid: d4378bfec37f718e48249a938ad2ad96, type: 2}
+  upperTracing: {fileID: 11400000, guid: d11ee8e0ed8b7beec94195743abafef1, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 5edfcbaccc4d139ad87596ceb54769fa, type: 2}
+  adventure: {fileID: 11400000, guid: 92660859aa55fcced8e4215c30423add, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.r.name
+  phonemeAudioKey: letter.r.sound
+  introAudioKey: letter.r.intro

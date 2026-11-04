@@ -1,0 +1,951 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d31845b000990a099940a1b954ae5cb, type: 3}
+  m_Name: AudioLibrary
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.AudioLibrary
+  entries:
+  - key: vo.welcome
+    text: Welcome to ABC Wonderworld!
+    clip: {fileID: 8300000, guid: d52825a1686691b958a444308d0b0afd, type: 3}
+    status: 2
+  - key: vo.lets_play
+    text: Let's play!
+    clip: {fileID: 8300000, guid: c5bb388369122f1dd8bb40c37ea107cf, type: 3}
+    status: 2
+  - key: vo.choose_world
+    text: Pick a world to explore!
+    clip: {fileID: 8300000, guid: 1a986275fc6c03e0cb267846c8e7c44d, type: 3}
+    status: 2
+  - key: vo.choose_activity
+    text: What shall we play?
+    clip: {fileID: 8300000, guid: 2a4aa3b008a0b118d801952ab8337e98, type: 3}
+    status: 2
+  - key: vo.this_is_letter
+    text: This is the letter
+    clip: {fileID: 8300000, guid: 3e13c110b12ce2fd6939a518a9493de7, type: 3}
+    status: 2
+  - key: vo.big
+    text: Big
+    clip: {fileID: 8300000, guid: eb0a94bfc0258e212a5b1f8078576b6b, type: 3}
+    status: 2
+  - key: vo.small
+    text: Small
+    clip: {fileID: 8300000, guid: c6acb1df9ad96244da9ec55bf9514481, type: 3}
+    status: 2
+  - key: vo.says
+    text: says
+    clip: {fileID: 8300000, guid: 3486b804aac9165b7bf42f3668f69c6e, type: 3}
+    status: 2
+  - key: vo.like
+    text: like
+    clip: {fileID: 8300000, guid: e670c09d84372b990af67708b6afcacf, type: 3}
+    status: 2
+  - key: vo.like_end_of
+    text: like at the end of
+    clip: {fileID: 8300000, guid: 7e5a2254836b00f479ad134785905dfe, type: 3}
+    status: 2
+  - key: vo.tap_pictures
+    text: Tap the pictures to hear their names!
+    clip: {fileID: 8300000, guid: 527916034cf321f48802e2f26c158fd3, type: 3}
+    status: 2
+  - key: vo.can_you_find
+    text: Can you find
+    clip: {fileID: 8300000, guid: 2d7a073b14c09c2c5834b79ffead24d3, type: 3}
+    status: 2
+  - key: vo.find_big
+    text: Can you find the big letter
+    clip: {fileID: 8300000, guid: 52e8447bcb02acf3bb5350069af9a07d, type: 3}
+    status: 2
+  - key: vo.find_small
+    text: Can you find the small letter
+    clip: {fileID: 8300000, guid: bc61ca442211d0a25b558e366b97c90e, type: 3}
+    status: 2
+  - key: vo.find_sound
+    text: Which letter makes the sound
+    clip: {fileID: 8300000, guid: 02132a4c79ca46683940007ac888254a, type: 3}
+    status: 2
+  - key: vo.you_found_it
+    text: You found it!
+    clip: {fileID: 8300000, guid: 5b289e97aa17875b599dc614f2f06cf3, type: 3}
+    status: 2
+  - key: vo.great_job
+    text: Great job!
+    clip: {fileID: 8300000, guid: 62067205714136ef6b21c0ac71ae4c9f, type: 3}
+    status: 2
+  - key: vo.hooray
+    text: Hooray!
+    clip: {fileID: 8300000, guid: 2fc7b0d410a56d706a93d594d4baf3df, type: 3}
+    status: 2
+  - key: vo.wonderful
+    text: Wonderful!
+    clip: {fileID: 8300000, guid: b118e6156e0f31103a484202f46d8daf, type: 3}
+    status: 2
+  - key: vo.you_did_it
+    text: You did it!
+    clip: {fileID: 8300000, guid: 656fb9fd389b1914e8e26954d92e0c97, type: 3}
+    status: 2
+  - key: vo.lets_look_again
+    text: Let's look again!
+    clip: {fileID: 8300000, guid: 4f4b5cbefddf67e5ebb624ef872d72ef, type: 3}
+    status: 2
+  - key: vo.try_another
+    text: Hmm, try another one!
+    clip: {fileID: 8300000, guid: b4484192cbdc7afba9a2791273a79e79, type: 3}
+    status: 2
+  - key: vo.here_it_is
+    text: Look! Here it is!
+    clip: {fileID: 8300000, guid: cecca9edae8e0ddcbbe763dfd052ef54, type: 3}
+    status: 2
+  - key: vo.trace_intro
+    text: Put your finger on the green dot, and follow the path!
+    clip: {fileID: 8300000, guid: bf3060f1aab6c0096b4c545f6e16e2bd, type: 3}
+    status: 2
+  - key: vo.trace_start_here
+    text: Start at the green dot!
+    clip: {fileID: 8300000, guid: cd9ef541cb98862dc8e3c5f73c48ee2c, type: 3}
+    status: 2
+  - key: vo.trace_keep_going
+    text: Keep going!
+    clip: {fileID: 8300000, guid: 3a8b814f1bccab70488d10cd3b3b8847, type: 3}
+    status: 2
+  - key: vo.trace_great
+    text: Beautiful tracing!
+    clip: {fileID: 8300000, guid: a8120ae9f5617373c81f0a2660ec5308, type: 3}
+    status: 2
+  - key: vo.trace_now_small
+    text: Now let's trace the small letter!
+    clip: {fileID: 8300000, guid: 120c46548735a64998c7d764eda49577, type: 3}
+    status: 2
+  - key: vo.match_pictures
+    text: Match each picture to its letter!
+    clip: {fileID: 8300000, guid: a4d75e3bd37da5cd3a0c6359bda0cb95, type: 3}
+    status: 2
+  - key: vo.match_case
+    text: Match the big letter to the small letter!
+    clip: {fileID: 8300000, guid: 8d4888fb7645375fcb9c86f00ce90b84, type: 3}
+    status: 2
+  - key: vo.match_tip
+    text: Tap a picture, then tap where it goes!
+    clip: {fileID: 8300000, guid: b832b21cca7e2cbcfa116d8ec3435815, type: 3}
+    status: 2
+  - key: vo.puzzle_intro
+    text: Let's finish the puzzle!
+    clip: {fileID: 8300000, guid: 7642e7d6000ed78658fd3240814fcf7d, type: 3}
+    status: 2
+  - key: vo.puzzle_missing
+    text: Which letter is missing?
+    clip: {fileID: 8300000, guid: c9fad3b4b1b37ccc1b80006dd5a7c66e, type: 3}
+    status: 2
+  - key: vo.music_intro
+    text: Let's sing the alphabet song!
+    clip: {fileID: 8300000, guid: cf27a29c2f3190515972e0d4c5ed2553, type: 3}
+    status: 2
+  - key: vo.music_play
+    text: Tap the bells to make music!
+    clip: {fileID: 8300000, guid: 897f57fa707feb2fa8054bece77d7bd6, type: 3}
+    status: 2
+  - key: vo.free_play
+    text: Let's explore! Tap anything you like.
+    clip: {fileID: 8300000, guid: 7168ca171ac9f02dfaa38857abacea54, type: 3}
+    status: 2
+  - key: vo.act_meet
+    text: Meet the letter!
+    clip: {fileID: 8300000, guid: f63c90eacd2c781cf991d8d3ad79b2f2, type: 3}
+    status: 2
+  - key: vo.act_trace
+    text: Let's trace!
+    clip: {fileID: 8300000, guid: f288340182357fc91be6490db1bd5a9d, type: 3}
+    status: 2
+  - key: vo.act_find
+    text: Find the letter!
+    clip: {fileID: 8300000, guid: 9f1f1c632a1afbd5282ae685a7eb8e89, type: 3}
+    status: 2
+  - key: vo.act_match
+    text: Let's match!
+    clip: {fileID: 8300000, guid: 7aadf91a78dcd8106850adc29057c11f, type: 3}
+    status: 2
+  - key: vo.act_adventure
+    text: Adventure time!
+    clip: {fileID: 8300000, guid: 014b70090c34b013b8486f1b4a17bcb9, type: 3}
+    status: 2
+  - key: vo.act_puzzle
+    text: Puzzle time!
+    clip: {fileID: 8300000, guid: beb39dfcee197b0368135a56f6fe3461, type: 3}
+    status: 2
+  - key: vo.star
+    text: You got a star!
+    clip: {fileID: 8300000, guid: 154ff2b384de49b469675d91e1075012, type: 3}
+    status: 2
+  - key: vo.sticker
+    text: A new sticker for your book!
+    clip: {fileID: 8300000, guid: 3158cc56f4aded984aa6b0b3b1864813, type: 3}
+    status: 2
+  - key: vo.grown_ups
+    text: This part is for grown-ups.
+    clip: {fileID: 8300000, guid: 953898293befca472b9cd9ed4e417d00, type: 3}
+    status: 2
+  - key: vo.break
+    text: You played so well! Time for a little rest?
+    clip: {fileID: 8300000, guid: fbf7c40088534605386cdb5defb82a0d, type: 3}
+    status: 2
+  - key: vo.alphabet_book
+    text: Your alphabet book!
+    clip: {fileID: 8300000, guid: 0f23ba5de7553e3f59e4370830029f77, type: 3}
+    status: 2
+  - key: world.world_happy_meadow.name
+    text: Happy Meadow!
+    clip: {fileID: 8300000, guid: faff24f75ff23701fba116c944955ccb, type: 3}
+    status: 2
+  - key: world.world_bubble_bay.name
+    text: Bubble Bay!
+    clip: {fileID: 8300000, guid: bc8be4761dda7a91cbf33d77d6698a2f, type: 3}
+    status: 2
+  - key: world.world_candy_kingdom.name
+    text: Candy Kingdom!
+    clip: {fileID: 8300000, guid: 310e230e1e01fd4c99dfb1a294d16bc9, type: 3}
+    status: 2
+  - key: world.world_dino_jungle.name
+    text: Dino Jungle!
+    clip: {fileID: 8300000, guid: 4b443fbe3391797dda1c592232cc5ee0, type: 3}
+    status: 2
+  - key: world.world_rainbow_mountain.name
+    text: Rainbow Mountain!
+    clip: {fileID: 8300000, guid: 4f67214d407e79d5baeb3b9c061da2f5, type: 3}
+    status: 2
+  - key: letter.a.name
+    text: Ay
+    clip: {fileID: 8300000, guid: 1048e31625d23cce4814ea31b46f44fa, type: 3}
+    status: 2
+  - key: letter.a.sound
+    text: "/\xE6/"
+    clip: {fileID: 8300000, guid: e217fca3892639fcf8cb45ea021fa262, type: 3}
+    status: 2
+  - key: letter.a.intro
+    text: Hi! I'm Apple Explorer!
+    clip: {fileID: 8300000, guid: 36209b451addd936dab8bc3a9db280df, type: 3}
+    status: 2
+  - key: vocab.vocab_apple
+    text: Apple!
+    clip: {fileID: 8300000, guid: 5adc3a60153841fc0b3e97d0bea06784, type: 3}
+    status: 2
+  - key: vocab.vocab_ant
+    text: Ant!
+    clip: {fileID: 8300000, guid: f8f72302010befc359e7f5936921ed5b, type: 3}
+    status: 2
+  - key: vocab.vocab_alligator
+    text: Alligator!
+    clip: {fileID: 8300000, guid: 84edf0a028b0c8c77b5db0b5ec61bb45, type: 3}
+    status: 2
+  - key: adventure.a.instruction
+    text: Tap the apples to fill the basket!
+    clip: {fileID: 8300000, guid: 40ab999c55f3d5c5b8382daa16405da6, type: 3}
+    status: 2
+  - key: letter.b.name
+    text: Bee
+    clip: {fileID: 8300000, guid: 268e2234025f3c48cbc28d3b7821c576, type: 3}
+    status: 2
+  - key: letter.b.sound
+    text: /b/
+    clip: {fileID: 8300000, guid: 6f789633e4e1898ada8755ada818a1d5, type: 3}
+    status: 2
+  - key: letter.b.intro
+    text: Hi! I'm Bouncy Bear!
+    clip: {fileID: 8300000, guid: ac2bd27651b9ef331ade1483878b3994, type: 3}
+    status: 2
+  - key: vocab.vocab_ball
+    text: Ball!
+    clip: {fileID: 8300000, guid: 5a820a05be725cb30812569f51d4cb10, type: 3}
+    status: 2
+  - key: vocab.vocab_bear
+    text: Bear!
+    clip: {fileID: 8300000, guid: e6697346d45fca72888839e7a2f2cdd7, type: 3}
+    status: 2
+  - key: vocab.vocab_banana
+    text: Banana!
+    clip: {fileID: 8300000, guid: 788a800521720e24fa7695294544e617, type: 3}
+    status: 2
+  - key: adventure.b.instruction
+    text: Pop the balloons with the letter B!
+    clip: {fileID: 8300000, guid: 5aad89e64b7ea8bd599ea75e75f0e472, type: 3}
+    status: 2
+  - key: letter.c.name
+    text: See
+    clip: {fileID: 8300000, guid: e95789f0872803ac784ab424e95c9ddb, type: 3}
+    status: 2
+  - key: letter.c.sound
+    text: /k/
+    clip: {fileID: 8300000, guid: e336121702c0c4f329efa302eba3cb35, type: 3}
+    status: 2
+  - key: letter.c.intro
+    text: Hi! I'm Clever Cat!
+    clip: {fileID: 8300000, guid: 8ebe3322e8be13a45b466db3494a942b, type: 3}
+    status: 2
+  - key: vocab.vocab_cat
+    text: Cat!
+    clip: {fileID: 8300000, guid: 550ecf955256c1b9a975be309849cc06, type: 3}
+    status: 2
+  - key: vocab.vocab_cake
+    text: Cake!
+    clip: {fileID: 8300000, guid: 9124085a97dc6c5e188c5f70ae21ccb9, type: 3}
+    status: 2
+  - key: vocab.vocab_car
+    text: Car!
+    clip: {fileID: 8300000, guid: 00b1bfc33e4b58fe29edb9649efcb3db, type: 3}
+    status: 2
+  - key: adventure.c.instruction
+    text: Help the caterpillar! Tap the bushes to find C things.
+    clip: {fileID: 8300000, guid: 9e4bbaf8fe55093098224913b97a7f66, type: 3}
+    status: 2
+  - key: letter.d.name
+    text: Dee
+    clip: {fileID: 8300000, guid: a2e329ee88356fdf9a690e4fb40b8d29, type: 3}
+    status: 2
+  - key: letter.d.sound
+    text: /d/
+    clip: {fileID: 8300000, guid: 45fa4cde77bc1e2ac9050425738ed450, type: 3}
+    status: 2
+  - key: letter.d.intro
+    text: Hi! I'm Dino Buddy!
+    clip: {fileID: 8300000, guid: 46b9ef9277fbc867a9511b18896aa633, type: 3}
+    status: 2
+  - key: vocab.vocab_dog
+    text: Dog!
+    clip: {fileID: 8300000, guid: 2e384e447aec0e8eb8253eb60a420b98, type: 3}
+    status: 2
+  - key: vocab.vocab_dinosaur
+    text: Dinosaur!
+    clip: {fileID: 8300000, guid: d8e2c8ed43d41c6a1b98fcffd5223abf, type: 3}
+    status: 2
+  - key: vocab.vocab_drum
+    text: Drum!
+    clip: {fileID: 8300000, guid: 7ed5b29e393205708b850567677edce7, type: 3}
+    status: 2
+  - key: adventure.d.instruction
+    text: Tap the dinosaur eggs. What's inside?
+    clip: {fileID: 8300000, guid: 05b5924b71f57953685b185a2d5119e7, type: 3}
+    status: 2
+  - key: letter.e.name
+    text: Ee
+    clip: {fileID: 8300000, guid: 0b62f3c48e0f45146a1589fabb388b91, type: 3}
+    status: 2
+  - key: letter.e.sound
+    text: "/\u025B/"
+    clip: {fileID: 8300000, guid: a9c270ca24a523a43812c472a0bd43af, type: 3}
+    status: 2
+  - key: letter.e.intro
+    text: Hi! I'm Ellie Elephant!
+    clip: {fileID: 8300000, guid: 5c95b3dc6698d216fa3fbb13f79addb5, type: 3}
+    status: 2
+  - key: vocab.vocab_egg
+    text: Egg!
+    clip: {fileID: 8300000, guid: d294abdc2b7a07b4cb7a51fbfb112fea, type: 3}
+    status: 2
+  - key: vocab.vocab_elephant
+    text: Elephant!
+    clip: {fileID: 8300000, guid: d66de11bbcabd9f738cd1ad61e740e35, type: 3}
+    status: 2
+  - key: vocab.vocab_envelope
+    text: Envelope!
+    clip: {fileID: 8300000, guid: e4e5a0416e5f3d68bb061f5ebecef74b, type: 3}
+    status: 2
+  - key: adventure.e.instruction
+    text: Tap Ellie's trunk to fill the bucket with water!
+    clip: {fileID: 8300000, guid: b823c90886aac7f048309f7ac2da0315, type: 3}
+    status: 2
+  - key: letter.f.name
+    text: Eff
+    clip: {fileID: 8300000, guid: 92bee20dad1c250b0a8f725834330ff6, type: 3}
+    status: 2
+  - key: letter.f.sound
+    text: /f/
+    clip: {fileID: 8300000, guid: 73ae028c8feba5eeba9b2045382f68ab, type: 3}
+    status: 2
+  - key: letter.f.intro
+    text: Hi! I'm Finny Fish!
+    clip: {fileID: 8300000, guid: a2b52cf6adcfaf7bf9798f1f1aee84da, type: 3}
+    status: 2
+  - key: vocab.vocab_fish
+    text: Fish!
+    clip: {fileID: 8300000, guid: 40c21c2ff7b84abe888dc3580b46f6ec, type: 3}
+    status: 2
+  - key: vocab.vocab_flower
+    text: Flower!
+    clip: {fileID: 8300000, guid: 570d5353fda550aff832899982e976c2, type: 3}
+    status: 2
+  - key: vocab.vocab_frog
+    text: Frog!
+    clip: {fileID: 8300000, guid: 297571ac73c41e4ec8a1ce44d59cd36c, type: 3}
+    status: 2
+  - key: adventure.f.instruction
+    text: Help the fish find their bubbles!
+    clip: {fileID: 8300000, guid: be5c95032660c9ad69bd615b5d95b916, type: 3}
+    status: 2
+  - key: letter.g.name
+    text: Jee
+    clip: {fileID: 8300000, guid: 2d8a70136cf7b4f0d94f581330aba6d7, type: 3}
+    status: 2
+  - key: letter.g.sound
+    text: /g/
+    clip: {fileID: 8300000, guid: 44cc72179e836c5209109fb3e0e1b631, type: 3}
+    status: 2
+  - key: letter.g.intro
+    text: Hi! I'm Gigi Giraffe!
+    clip: {fileID: 8300000, guid: 6b6c835779b1eae488a362f0543c9b28, type: 3}
+    status: 2
+  - key: vocab.vocab_goat
+    text: Goat!
+    clip: {fileID: 8300000, guid: a480047dd2b3829c19925d115f99a6b1, type: 3}
+    status: 2
+  - key: vocab.vocab_grapes
+    text: Grapes!
+    clip: {fileID: 8300000, guid: a80cfbcc36b76c44b8f43ecf314c903b, type: 3}
+    status: 2
+  - key: vocab.vocab_giraffe
+    text: Giraffe!
+    clip: {fileID: 8300000, guid: fcdb6e6b0dfd88857b6949c79dfcbc45, type: 3}
+    status: 2
+  - key: adventure.g.instruction
+    text: Find the G flowers in Gigi's garden!
+    clip: {fileID: 8300000, guid: 09eb31f96041685ab81af46a6a111ad1, type: 3}
+    status: 2
+  - key: letter.h.name
+    text: Aitch
+    clip: {fileID: 8300000, guid: dbe6e31ab7f4adf49ba00117e3a16d38, type: 3}
+    status: 2
+  - key: letter.h.sound
+    text: /h/
+    clip: {fileID: 8300000, guid: f77cfc1daabe3fc4f85674db33f937e8, type: 3}
+    status: 2
+  - key: letter.h.intro
+    text: Hi! I'm Happy House!
+    clip: {fileID: 8300000, guid: bc5b16c5edfc4784180b07bbf8250a0f, type: 3}
+    status: 2
+  - key: vocab.vocab_hat
+    text: Hat!
+    clip: {fileID: 8300000, guid: 869f08188579ae6f99705901480714de, type: 3}
+    status: 2
+  - key: vocab.vocab_house
+    text: House!
+    clip: {fileID: 8300000, guid: 025623898292dd5a19d2bebb4458bdf5, type: 3}
+    status: 2
+  - key: vocab.vocab_horse
+    text: Horse!
+    clip: {fileID: 8300000, guid: dff9c8b63859e79cab8ed6173437e479, type: 3}
+    status: 2
+  - key: adventure.h.instruction
+    text: Put the roof, door and window on the house!
+    clip: {fileID: 8300000, guid: cbbc44f167ac7fa8a976961503060544, type: 3}
+    status: 2
+  - key: letter.i.name
+    text: Eye
+    clip: {fileID: 8300000, guid: 6ed10450bd0f9ed55832608de5efabb8, type: 3}
+    status: 2
+  - key: letter.i.sound
+    text: "/\u026A/"
+    clip: {fileID: 8300000, guid: 2ed601e83db3d6c909f389573f77c892, type: 3}
+    status: 2
+  - key: letter.i.intro
+    text: Hi! I'm Icy Ice Cream!
+    clip: {fileID: 8300000, guid: db5482129845552f19a3eb47239b6266, type: 3}
+    status: 2
+  - key: vocab.vocab_insect
+    text: Insect!
+    clip: {fileID: 8300000, guid: 8f72889acabc33236a9435dadade8b7d, type: 3}
+    status: 2
+  - key: vocab.vocab_igloo
+    text: Igloo!
+    clip: {fileID: 8300000, guid: 1ca07427cb93de2f7b3c0e9914823d3e, type: 3}
+    status: 2
+  - key: vocab.vocab_ice_cream
+    text: Ice cream!
+    clip: {fileID: 8300000, guid: af0fbc4522703181492227afb3960097, type: 3}
+    status: 2
+  - key: adventure.i.instruction
+    text: Put each ice cream scoop on the same colour cone!
+    clip: {fileID: 8300000, guid: d2a507d7f8b80e94e906fa35b3bd9349, type: 3}
+    status: 2
+  - key: letter.j.name
+    text: Jay
+    clip: {fileID: 8300000, guid: cb09eb8fde6e13ae0bf645ae802494e6, type: 3}
+    status: 2
+  - key: letter.j.sound
+    text: "/d\u0292/"
+    clip: {fileID: 8300000, guid: d040e7261208d170d904b7e4892160a6, type: 3}
+    status: 2
+  - key: letter.j.intro
+    text: Hi! I'm Jelly Jellyfish!
+    clip: {fileID: 8300000, guid: d507ef422b468b1daa1ac656b91751f2, type: 3}
+    status: 2
+  - key: vocab.vocab_jam
+    text: Jam!
+    clip: {fileID: 8300000, guid: 547a7ef3eb5652395861a04ac625fc4b, type: 3}
+    status: 2
+  - key: vocab.vocab_juice
+    text: Juice!
+    clip: {fileID: 8300000, guid: 4a62de2020549a808bd8c02bc312ee55, type: 3}
+    status: 2
+  - key: vocab.vocab_jellyfish
+    text: Jellyfish!
+    clip: {fileID: 8300000, guid: f361016b6dd90ae09be18eafaff6a743, type: 3}
+    status: 2
+  - key: adventure.j.instruction
+    text: Pop the bubbles with the letter J!
+    clip: {fileID: 8300000, guid: 3aa576b63b816962fa7251e0595cfa45, type: 3}
+    status: 2
+  - key: letter.k.name
+    text: Kay
+    clip: {fileID: 8300000, guid: 4dc761471b195ea8b915d9e8e5c00b29, type: 3}
+    status: 2
+  - key: letter.k.sound
+    text: /k/
+    clip: {fileID: 8300000, guid: 002378558194943f3adce379661fef58, type: 3}
+    status: 2
+  - key: letter.k.intro
+    text: Hi! I'm Kiki Kite!
+    clip: {fileID: 8300000, guid: 9bd2ac8f906ad331b9570d78b25281dd, type: 3}
+    status: 2
+  - key: vocab.vocab_kite
+    text: Kite!
+    clip: {fileID: 8300000, guid: 4da5499e89d92e15b829a34086e87ac9, type: 3}
+    status: 2
+  - key: vocab.vocab_key
+    text: Key!
+    clip: {fileID: 8300000, guid: 2fa3bcf5a644de2d7a0b8001d71fe8fe, type: 3}
+    status: 2
+  - key: vocab.vocab_kangaroo
+    text: Kangaroo!
+    clip: {fileID: 8300000, guid: 325fd5e3fb62e9c79910d2aa1e23eee8, type: 3}
+    status: 2
+  - key: adventure.k.instruction
+    text: Move the kite to catch the stars!
+    clip: {fileID: 8300000, guid: 1ef3c450b7ce9839abf8004324769ae1, type: 3}
+    status: 2
+  - key: letter.l.name
+    text: Ell
+    clip: {fileID: 8300000, guid: b2d59648debf46e3b9b3dc15c17e8b17, type: 3}
+    status: 2
+  - key: letter.l.sound
+    text: /l/
+    clip: {fileID: 8300000, guid: 50c66ffb5835456a7b5bd7e93e12b482, type: 3}
+    status: 2
+  - key: letter.l.intro
+    text: Hi! I'm Leo Lion!
+    clip: {fileID: 8300000, guid: be4c589ea415d305bb9db013d3b6c034, type: 3}
+    status: 2
+  - key: vocab.vocab_lion
+    text: Lion!
+    clip: {fileID: 8300000, guid: 113ecd0f259dcfb9fbc18afd522712ea, type: 3}
+    status: 2
+  - key: vocab.vocab_leaf
+    text: Leaf!
+    clip: {fileID: 8300000, guid: 03129c44737d2fdf4966427622d911df, type: 3}
+    status: 2
+  - key: vocab.vocab_lamp
+    text: Lamp!
+    clip: {fileID: 8300000, guid: 2d52ea7d2ec65e29fba1b924a080fe2e, type: 3}
+    status: 2
+  - key: adventure.l.instruction
+    text: Help Leo! Put his mane back on.
+    clip: {fileID: 8300000, guid: 140ee7a71413846ada301069815f7c3c, type: 3}
+    status: 2
+  - key: letter.m.name
+    text: Em
+    clip: {fileID: 8300000, guid: f05204981de199348b76344c8999bc99, type: 3}
+    status: 2
+  - key: letter.m.sound
+    text: /m/
+    clip: {fileID: 8300000, guid: 3ffbb2111944fca979888654b7edaa08, type: 3}
+    status: 2
+  - key: letter.m.intro
+    text: Hi! I'm Milo Monkey!
+    clip: {fileID: 8300000, guid: ba6f1d42fc14d1026bc9ab35b5bef822, type: 3}
+    status: 2
+  - key: vocab.vocab_monkey
+    text: Monkey!
+    clip: {fileID: 8300000, guid: 4ef41e1d639b458d985f7bbe923d342d, type: 3}
+    status: 2
+  - key: vocab.vocab_moon
+    text: Moon!
+    clip: {fileID: 8300000, guid: ae8360905fda6e47d910da02a744bbce, type: 3}
+    status: 2
+  - key: vocab.vocab_milk
+    text: Milk!
+    clip: {fileID: 8300000, guid: b98c2f9beb0a9b4c2b71d6b50a6f87ef, type: 3}
+    status: 2
+  - key: adventure.m.instruction
+    text: Tap the fruit to give Milo a snack!
+    clip: {fileID: 8300000, guid: 9c9763e477b8319a39be3973c07b00bc, type: 3}
+    status: 2
+  - key: letter.n.name
+    text: En
+    clip: {fileID: 8300000, guid: a396d16a3945bd24f9ca09fe74abe2ee, type: 3}
+    status: 2
+  - key: letter.n.sound
+    text: /n/
+    clip: {fileID: 8300000, guid: 10a4733a83de0db398e4a4155ea3d2ac, type: 3}
+    status: 2
+  - key: letter.n.intro
+    text: Hi! I'm Nelly Nest!
+    clip: {fileID: 8300000, guid: abd323cc163093c218e101d2e144f9bf, type: 3}
+    status: 2
+  - key: vocab.vocab_nest
+    text: Nest!
+    clip: {fileID: 8300000, guid: f60f244d7166a85929e316dd0d92fcbe, type: 3}
+    status: 2
+  - key: vocab.vocab_nose
+    text: Nose!
+    clip: {fileID: 8300000, guid: c0a278bee0e84bd86962c263d44e5d68, type: 3}
+    status: 2
+  - key: vocab.vocab_net
+    text: Net!
+    clip: {fileID: 8300000, guid: e4d7dc82e9c11bee4ba30fa335513e8a, type: 3}
+    status: 2
+  - key: adventure.n.instruction
+    text: Put the eggs safely in the nest!
+    clip: {fileID: 8300000, guid: 4976506301a18730f94ad1ba76edb656, type: 3}
+    status: 2
+  - key: letter.o.name
+    text: Oh
+    clip: {fileID: 8300000, guid: 81f39148f6550df5d9b856e46101ec33, type: 3}
+    status: 2
+  - key: letter.o.sound
+    text: "/\u0251/"
+    clip: {fileID: 8300000, guid: 888026e760154c3a08f1f91c509e2928, type: 3}
+    status: 2
+  - key: letter.o.intro
+    text: Hi! I'm Ollie Octopus!
+    clip: {fileID: 8300000, guid: 3e60353dc98865f69b9bf6c630c563fc, type: 3}
+    status: 2
+  - key: vocab.vocab_octopus
+    text: Octopus!
+    clip: {fileID: 8300000, guid: 1d960d45bb95d3d7c9ed47a2350aaa30, type: 3}
+    status: 2
+  - key: vocab.vocab_orange
+    text: Orange!
+    clip: {fileID: 8300000, guid: 61fd3e4d0b4b48342a00a8fc8b984799, type: 3}
+    status: 2
+  - key: vocab.vocab_owl
+    text: Owl!
+    clip: {fileID: 8300000, guid: feee5a35f11f2e5319c66faae3902f79, type: 3}
+    status: 2
+  - key: adventure.o.instruction
+    text: Tap the shells to find Ollie's treasures!
+    clip: {fileID: 8300000, guid: 99c2f487a11142bbdb1695df7d00af6c, type: 3}
+    status: 2
+  - key: letter.p.name
+    text: Pee
+    clip: {fileID: 8300000, guid: 3968cd97c3a5029a8a6d5e390516804c, type: 3}
+    status: 2
+  - key: letter.p.sound
+    text: /p/
+    clip: {fileID: 8300000, guid: c5f8d7955ffc722ff831ecf4749fb48c, type: 3}
+    status: 2
+  - key: letter.p.intro
+    text: Hi! I'm Poppy Penguin!
+    clip: {fileID: 8300000, guid: 7979adceb67a71d6696dd445b17c2814, type: 3}
+    status: 2
+  - key: vocab.vocab_penguin
+    text: Penguin!
+    clip: {fileID: 8300000, guid: 9bf5c5be4c12419c39e4f90d7461327d, type: 3}
+    status: 2
+  - key: vocab.vocab_pig
+    text: Pig!
+    clip: {fileID: 8300000, guid: d8a3b8ed99a39f6b381183c9dedb6635, type: 3}
+    status: 2
+  - key: vocab.vocab_pizza
+    text: Pizza!
+    clip: {fileID: 8300000, guid: e5abeb4d2af7ceba593d007fd019fe19, type: 3}
+    status: 2
+  - key: adventure.p.instruction
+    text: Tap the ice to help Poppy slide along!
+    clip: {fileID: 8300000, guid: 577d0d7c452a7ec5cb6778a638f3d6c7, type: 3}
+    status: 2
+  - key: letter.q.name
+    text: Cue
+    clip: {fileID: 8300000, guid: 06b1918ab099a6474805c5eda6173d15, type: 3}
+    status: 2
+  - key: letter.q.sound
+    text: /kw/
+    clip: {fileID: 8300000, guid: b22a1713fc7c3f1158f651d2ca31787e, type: 3}
+    status: 2
+  - key: letter.q.intro
+    text: Hi! I'm Queen Quill!
+    clip: {fileID: 8300000, guid: d7889fd7058bd61b993940e8f52c2191, type: 3}
+    status: 2
+  - key: vocab.vocab_queen
+    text: Queen!
+    clip: {fileID: 8300000, guid: 425a2a0bdfdcb787c9724198a88ae946, type: 3}
+    status: 2
+  - key: vocab.vocab_quilt
+    text: Quilt!
+    clip: {fileID: 8300000, guid: 4a9deea9c91e589ef87ccd58e304a512, type: 3}
+    status: 2
+  - key: vocab.vocab_question_mark
+    text: Question mark!
+    clip: {fileID: 8300000, guid: 8baa0b1c65382076da6640f4fbd4f4ed, type: 3}
+    status: 2
+  - key: adventure.q.instruction
+    text: Give each crown to the matching cushion!
+    clip: {fileID: 8300000, guid: 404274d3af4d3dc5a8b70bd085cc4381, type: 3}
+    status: 2
+  - key: letter.r.name
+    text: Ar
+    clip: {fileID: 8300000, guid: 046a54a02c683211792e7f5c2be2e05e, type: 3}
+    status: 2
+  - key: letter.r.sound
+    text: /r/
+    clip: {fileID: 8300000, guid: 5f3ee52cae8764fcf88dfd5b87b00312, type: 3}
+    status: 2
+  - key: letter.r.intro
+    text: Hi! I'm Ruby Rabbit!
+    clip: {fileID: 8300000, guid: d859b5b569ce914d79ed0f2569db53d8, type: 3}
+    status: 2
+  - key: vocab.vocab_rabbit
+    text: Rabbit!
+    clip: {fileID: 8300000, guid: 84e959dc76f0adb0ca1595869a7b1fb9, type: 3}
+    status: 2
+  - key: vocab.vocab_rainbow
+    text: Rainbow!
+    clip: {fileID: 8300000, guid: 14d17faff449d8123a17ff38a42d5a59, type: 3}
+    status: 2
+  - key: vocab.vocab_robot
+    text: Robot!
+    clip: {fileID: 8300000, guid: aa8caf7d6f1189a9faf1492e536b8195, type: 3}
+    status: 2
+  - key: adventure.r.instruction
+    text: Tap the carrots to pull them up!
+    clip: {fileID: 8300000, guid: e5ca75c1a2fd1eed795850053c5ddeee, type: 3}
+    status: 2
+  - key: letter.s.name
+    text: Ess
+    clip: {fileID: 8300000, guid: da0def6362467931c814158e4c35f07e, type: 3}
+    status: 2
+  - key: letter.s.sound
+    text: /s/
+    clip: {fileID: 8300000, guid: 03c84b724ba6aaf8ca7059de9e8f9907, type: 3}
+    status: 2
+  - key: letter.s.intro
+    text: Hi! I'm Sunny Sun!
+    clip: {fileID: 8300000, guid: 0e504441aaea938e28a0b63ac1eb1a20, type: 3}
+    status: 2
+  - key: vocab.vocab_sun
+    text: Sun!
+    clip: {fileID: 8300000, guid: 351c2b81853dddfda8d5518233620413, type: 3}
+    status: 2
+  - key: vocab.vocab_snake
+    text: Snake!
+    clip: {fileID: 8300000, guid: 42a96a857672be202b920c041c695fcd, type: 3}
+    status: 2
+  - key: vocab.vocab_sock
+    text: Sock!
+    clip: {fileID: 8300000, guid: 1c04ee0b4a9956be382bbaaa98a789ad, type: 3}
+    status: 2
+  - key: adventure.s.instruction
+    text: Tap the clouds with S to let the sun shine!
+    clip: {fileID: 8300000, guid: c11a97f465f31bf9a8834e3e87aa7236, type: 3}
+    status: 2
+  - key: letter.t.name
+    text: Tee
+    clip: {fileID: 8300000, guid: bcb99df5df65c5015b64e446d4a8510a, type: 3}
+    status: 2
+  - key: letter.t.sound
+    text: /t/
+    clip: {fileID: 8300000, guid: 74a518334790891cc9081f7ddcf3abbd, type: 3}
+    status: 2
+  - key: letter.t.intro
+    text: Hi! I'm Tommy Turtle!
+    clip: {fileID: 8300000, guid: 6cf2fc3f1c40cef27bcc30a6eaf22e5d, type: 3}
+    status: 2
+  - key: vocab.vocab_turtle
+    text: Turtle!
+    clip: {fileID: 8300000, guid: 3c02008d2f988b2febdceb293be41e9f, type: 3}
+    status: 2
+  - key: vocab.vocab_train
+    text: Train!
+    clip: {fileID: 8300000, guid: 111c67fb4b2800e83b76b7c01f9aa3c3, type: 3}
+    status: 2
+  - key: vocab.vocab_tree
+    text: Tree!
+    clip: {fileID: 8300000, guid: e299d453118a2dfb7a401486f3d5dd18, type: 3}
+    status: 2
+  - key: adventure.t.instruction
+    text: Tap the shell spots to colour Tommy's shell!
+    clip: {fileID: 8300000, guid: 14694d1e2ae4987f1bc1f653e84054b6, type: 3}
+    status: 2
+  - key: letter.u.name
+    text: You
+    clip: {fileID: 8300000, guid: 5297cf0d19a46902d9ce13ff697468a5, type: 3}
+    status: 2
+  - key: letter.u.sound
+    text: "/\u028C/"
+    clip: {fileID: 8300000, guid: 2b8208961d520dbf2b967fb8d653523e, type: 3}
+    status: 2
+  - key: letter.u.intro
+    text: Hi! I'm Uma Umbrella!
+    clip: {fileID: 8300000, guid: f9510d2e8137203e48afca8bb0ef2e2b, type: 3}
+    status: 2
+  - key: vocab.vocab_umbrella
+    text: Umbrella!
+    clip: {fileID: 8300000, guid: 47f6e3028958ff6148f6e42782329218, type: 3}
+    status: 2
+  - key: vocab.vocab_up
+    text: Up!
+    clip: {fileID: 8300000, guid: c8a749ed7ab02b755889b646d0a736d5, type: 3}
+    status: 2
+  - key: vocab.vocab_unicorn
+    text: Unicorn!
+    clip: {fileID: 8300000, guid: 6b9bfb25c352688b7ab41b9ba1f09417, type: 3}
+    status: 2
+  - key: adventure.u.instruction
+    text: Move the umbrella to catch the raindrops!
+    clip: {fileID: 8300000, guid: 931f66e29065723988e54eedee056cd9, type: 3}
+    status: 2
+  - key: letter.v.name
+    text: Vee
+    clip: {fileID: 8300000, guid: 393e522cfb12803579ba620911ee8ffb, type: 3}
+    status: 2
+  - key: letter.v.sound
+    text: /v/
+    clip: {fileID: 8300000, guid: 60bbc22552d6b3046a800e5edeaf01d9, type: 3}
+    status: 2
+  - key: letter.v.intro
+    text: Hi! I'm Vinnie Volcano!
+    clip: {fileID: 8300000, guid: 304588b8e061c01f4ad4081c4a684cb0, type: 3}
+    status: 2
+  - key: vocab.vocab_volcano
+    text: Volcano!
+    clip: {fileID: 8300000, guid: 959f24d96117f097da60f7ce6bf8ebfa, type: 3}
+    status: 2
+  - key: vocab.vocab_van
+    text: Van!
+    clip: {fileID: 8300000, guid: 73b2e5028a3f677e3b6f7efd05c42199, type: 3}
+    status: 2
+  - key: vocab.vocab_violin
+    text: Violin!
+    clip: {fileID: 8300000, guid: 6dbc4c845da9f781785adc8f28606b3f, type: 3}
+    status: 2
+  - key: adventure.v.instruction
+    text: Tap the rocks near Vinnie. What will you find?
+    clip: {fileID: 8300000, guid: 655903487cc0e0d20b500e1d24e7e0e7, type: 3}
+    status: 2
+  - key: letter.w.name
+    text: Double you
+    clip: {fileID: 8300000, guid: 5aeb0d8f318488d14886ca93c810adde, type: 3}
+    status: 2
+  - key: letter.w.sound
+    text: /w/
+    clip: {fileID: 8300000, guid: 40fa28097d5a51fc9ba11a5906fba48a, type: 3}
+    status: 2
+  - key: letter.w.intro
+    text: Hi! I'm Willy Whale!
+    clip: {fileID: 8300000, guid: 2c693daa8f49a11358b0e54d134438ec, type: 3}
+    status: 2
+  - key: vocab.vocab_whale
+    text: Whale!
+    clip: {fileID: 8300000, guid: 5d87e9ca62771404aaa34294d3be29cd, type: 3}
+    status: 2
+  - key: vocab.vocab_watermelon
+    text: Watermelon!
+    clip: {fileID: 8300000, guid: 9232cb5294169372da14763388bbff86, type: 3}
+    status: 2
+  - key: vocab.vocab_window
+    text: Window!
+    clip: {fileID: 8300000, guid: aa8759389b7d628cdb359b0a49f893be, type: 3}
+    status: 2
+  - key: adventure.w.instruction
+    text: Pop Willy's bubbles with the letter W!
+    clip: {fileID: 8300000, guid: 0fec49e71dd91a32091ddb2fbed5c4ff, type: 3}
+    status: 2
+  - key: letter.x.name
+    text: Ex
+    clip: {fileID: 8300000, guid: 3d3448ca14254248a9861cc5ebdc1591, type: 3}
+    status: 2
+  - key: letter.x.sound
+    text: /ks/
+    clip: {fileID: 8300000, guid: c9f85479f61755137ac418664f14a21f, type: 3}
+    status: 2
+  - key: letter.x.intro
+    text: Hi! I'm Xander Xylophone!
+    clip: {fileID: 8300000, guid: 2efd53d2e8cfc6f48875182d7034dcf2, type: 3}
+    status: 2
+  - key: vocab.vocab_fox
+    text: Fox!
+    clip: {fileID: 8300000, guid: 9a55a47bd3239476087e39f34c8a51f2, type: 3}
+    status: 2
+  - key: vocab.vocab_xylophone
+    text: Xylophone!
+    clip: {fileID: 8300000, guid: 950f6dcb2f8f952a2a0f342a7784d069, type: 3}
+    status: 2
+  - key: vocab.vocab_x_ray
+    text: X-ray!
+    clip: {fileID: 8300000, guid: 17ae143cfb6742d3d9eea675b4e88007, type: 3}
+    status: 2
+  - key: adventure.x.instruction
+    text: Tap the xylophone bars to make music!
+    clip: {fileID: 8300000, guid: cbfe7772691b7180590da341c3474098, type: 3}
+    status: 2
+  - key: letter.y.name
+    text: Why
+    clip: {fileID: 8300000, guid: 18579051e6c7be3a9a74ffd3e2e64663, type: 3}
+    status: 2
+  - key: letter.y.sound
+    text: /j/
+    clip: {fileID: 8300000, guid: e10bf986f69bf6094806c6759d16c624, type: 3}
+    status: 2
+  - key: letter.y.intro
+    text: Hi! I'm Yoyo Yeti!
+    clip: {fileID: 8300000, guid: 22908aa4117dce0df9d546cb64e82ef1, type: 3}
+    status: 2
+  - key: vocab.vocab_yo_yo
+    text: Yo-yo!
+    clip: {fileID: 8300000, guid: 837c916947d4f02dcbb8413e6fb126cd, type: 3}
+    status: 2
+  - key: vocab.vocab_yellow
+    text: Yellow!
+    clip: {fileID: 8300000, guid: 9f0208db542e0434fbe0d59dd6da22a2, type: 3}
+    status: 2
+  - key: vocab.vocab_yak
+    text: Yak!
+    clip: {fileID: 8300000, guid: 7d6325d97e3d1a0f1bbeadd4d8c5861b, type: 3}
+    status: 2
+  - key: adventure.y.instruction
+    text: Swipe up and down to play with the yo-yo!
+    clip: {fileID: 8300000, guid: fa066911a08f8b4a0bc22c660c11dccc, type: 3}
+    status: 2
+  - key: letter.z.name
+    text: Zee
+    clip: {fileID: 8300000, guid: d7b9209cc48e1a98b9037fc32f25886b, type: 3}
+    status: 2
+  - key: letter.z.sound
+    text: /z/
+    clip: {fileID: 8300000, guid: d2eec8b689889ede69c0d18652cd6fc9, type: 3}
+    status: 2
+  - key: letter.z.intro
+    text: Hi! I'm Ziggy Zebra!
+    clip: {fileID: 8300000, guid: ac636e7d8994faa398267fe0728a4bf2, type: 3}
+    status: 2
+  - key: vocab.vocab_zebra
+    text: Zebra!
+    clip: {fileID: 8300000, guid: 5472a148f5eb6dc229d9cdb64b68da7a, type: 3}
+    status: 2
+  - key: vocab.vocab_zipper
+    text: Zipper!
+    clip: {fileID: 8300000, guid: b0db8d2f941c56b6ab1fad4e3b3598f2, type: 3}
+    status: 2
+  - key: vocab.vocab_zoo
+    text: Zoo!
+    clip: {fileID: 8300000, guid: ca38e881d7664ad529b10ce62f9c1bb0, type: 3}
+    status: 2
+  - key: adventure.z.instruction
+    text: Tap to give Ziggy his stripes back!
+    clip: {fileID: 8300000, guid: ee38cfe639e57ed03b4573a74a900ded, type: 3}
+    status: 2

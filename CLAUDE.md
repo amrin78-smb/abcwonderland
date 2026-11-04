@@ -1,0 +1,21 @@
+# ABC Wonderworld — Claude Code Project Rules
+
+- Read `Documentation/GAME_DESIGN_DOCUMENT.md` (product authority) and `Documentation/MASTER_DEVELOPMENT_PROMPT.md` (engineering authority) before implementing features. Originals: `Documentation/Source/*.docx`.
+- Unity **6000.3.27f2**, URP, C#, Android-first, landscape, touch-first, offline-first. Unity project lives in `UnityProject/`.
+- Follow `Documentation/TECHNICAL_ARCHITECTURE.md`. Runtime code: `UnityProject/Assets/ABCWonderworld/Scripts/Runtime` (asmdef `ABCWonderworld.Runtime`); editor pipeline: `Scripts/Editor`.
+- Content source of truth is `UnityProject/Assets/ABCWonderworld/Content/alphabet.json`. ScriptableObjects, prefabs, pictures, SFX and scenes are **generated** by `Tools/setup.sh` (menu: ABC Wonderworld ▸ Setup Project). Do not hand-edit generated assets; change the source or the generator.
+- Letter stroke paths (tracing, glyph rendering, 3D character bodies) come from `LetterStrokeLibrary.cs` only.
+- Do not hardcode letter-specific behaviour into shared systems; use data (AdventureDefinition archetypes, vocabulary flags such as `startsWithBeginnerSound`).
+- Letter NAME and SOUND are separate data and separate audio clips. Never present a word as starting with the beginner sound unless `startsWithBeginnerSound` is true.
+- No ads, chat, social features, child-facing purchases, external links, network use or unnecessary data collection. No microphone.
+- Child-facing UI: no reading required, no timers/countdowns, no fail states, large targets, voice-led. Exits inside activities are press-and-hold.
+- Never claim a feature/build/test is complete unless verified. Commands:
+  - `Tools/setup.sh` — regenerate + validate (writes `Documentation/CONTENT_COMPLETENESS.md`)
+  - `Tools/run_tests.sh [EditMode|PlayMode|all]`
+  - `Tools/autopilot.sh` — Linux build + automated play-through with screenshots in `Logs/AutoPilot/`
+  - `Tools/build_android.sh` — dev APK in `Builds/Android/`
+  - `Tools/voice/generate_voice.sh` — provisional TTS voice lines (then `Tools/setup.sh`)
+- Do not delete or overwrite user assets or uncommitted work without permission.
+- Keep `Documentation/REQUIREMENTS_TRACEABILITY.md`, `DECISIONS.md` and `ASSET_REGISTER.md` current.
+- Use only original or properly licensed assets; record provenance in `Documentation/ASSET_REGISTER.md`.
+- Prefer small, testable vertical slices over large unverified changes.

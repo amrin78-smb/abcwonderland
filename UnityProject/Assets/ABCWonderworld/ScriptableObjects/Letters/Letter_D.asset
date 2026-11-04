@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_D
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_d
+  upper: 68
+  lower: 100
+  displayName: D
+  spokenName: Dee
+  phonemeDisplay: /d/
+  phonemeIpa: d
+  soundHint: d, as in dog
+  soundNote: 
+  characterId: character_d
+  worldId: world_happy_meadow
+  vocabulary:
+  - {fileID: 11400000, guid: 6555eedc977cbd5a9a40503c6a69732e, type: 2}
+  - {fileID: 11400000, guid: 9eb845fdfa401889a8fdfb00054e5e6d, type: 2}
+  - {fileID: 11400000, guid: fd2512b5ef594e831bfe3b74c9939499, type: 2}
+  upperTracing: {fileID: 11400000, guid: 4f4d35bf283c6c6c69b817c731b58361, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 20de8b7c31def87eb8562fc8961a2265, type: 2}
+  adventure: {fileID: 11400000, guid: 95d3d94198fd20aaab78f9fbb909833b, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.d.name
+  phonemeAudioKey: letter.d.sound
+  introAudioKey: letter.d.intro

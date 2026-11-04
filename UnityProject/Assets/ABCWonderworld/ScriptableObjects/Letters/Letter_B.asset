@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_B
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_b
+  upper: 66
+  lower: 98
+  displayName: B
+  spokenName: Bee
+  phonemeDisplay: /b/
+  phonemeIpa: b
+  soundHint: b, as in ball
+  soundNote: 
+  characterId: character_b
+  worldId: world_happy_meadow
+  vocabulary:
+  - {fileID: 11400000, guid: 37a7bb1248a7cc98398796913784204e, type: 2}
+  - {fileID: 11400000, guid: 7979ffa35c4fa61e8b6d29a9a95be161, type: 2}
+  - {fileID: 11400000, guid: ab598bbdf0749f2c980883319f23ac6c, type: 2}
+  upperTracing: {fileID: 11400000, guid: 9ecccbe635dae8e68b7cf3c8e14d2387, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 1b483f28223afbb50a022645c2120997, type: 2}
+  adventure: {fileID: 11400000, guid: f143f54c48d303746bfbdf6393d3b098, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.b.name
+  phonemeAudioKey: letter.b.sound
+  introAudioKey: letter.b.intro

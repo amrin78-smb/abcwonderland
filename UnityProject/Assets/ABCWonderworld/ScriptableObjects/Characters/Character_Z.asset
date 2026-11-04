@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efd79472ee2bf09848becb1a38ed5f, type: 3}
+  m_Name: Character_Z
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.CharacterDefinition
+  id: character_z
+  displayName: Ziggy Zebra
+  letterId: letter_z
+  personality: Playful and adventurous
+  themeObject: Zebra
+  primaryColor: {r: 0.3529412, g: 0.3529412, b: 0.43137255, a: 1}
+  accentColor: {r: 0.9490196, g: 0.9490196, b: 0.9490196, a: 1}
+  prefab: {fileID: 6977899194219258320, guid: 49ec698be9d3bfb218208e3658f62344, type: 3}
+  portrait: {fileID: 21300000, guid: 5b87501b7457cd9b29dcc3a43a863c19, type: 3}
+  introAudioKey: letter.z.intro
+  artStatus: 1

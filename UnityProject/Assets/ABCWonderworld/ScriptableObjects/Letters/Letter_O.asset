@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_O
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_o
+  upper: 79
+  lower: 111
+  displayName: O
+  spokenName: Oh
+  phonemeDisplay: "/\u0251/"
+  phonemeIpa: "\u0251"
+  soundHint: o, as in octopus
+  soundNote: "Short O (/\u0251/ in General American) is the beginner sound. 'Orange'
+    (/\u0254/) and 'owl' (/a\u028A/) contain different O sounds and are not used
+    to teach /\u0251/."
+  characterId: character_o
+  worldId: world_candy_kingdom
+  vocabulary:
+  - {fileID: 11400000, guid: 04e012fbe299a51bca31950b47ce9eb4, type: 2}
+  - {fileID: 11400000, guid: c8f91e31bf3d13613a9efe3730bc0926, type: 2}
+  - {fileID: 11400000, guid: a48c2a587daf8b383b75aefde66fb351, type: 2}
+  upperTracing: {fileID: 11400000, guid: 6818686e55479d83cbec45d189349ef8, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 6110c6aa74125faeaa83a514ac1b1d47, type: 2}
+  adventure: {fileID: 11400000, guid: 95ddcb5d62bbad8a288b35d116fca0e3, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.o.name
+  phonemeAudioKey: letter.o.sound
+  introAudioKey: letter.o.intro

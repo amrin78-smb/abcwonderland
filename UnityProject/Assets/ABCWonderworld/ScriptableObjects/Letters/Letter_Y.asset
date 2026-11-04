@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_Y
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_y
+  upper: 89
+  lower: 121
+  displayName: Y
+  spokenName: Why
+  phonemeDisplay: /j/
+  phonemeIpa: j
+  soundHint: y, as in yellow
+  soundNote: 
+  characterId: character_y
+  worldId: world_rainbow_mountain
+  vocabulary:
+  - {fileID: 11400000, guid: 8dfb9aef8a797ad35ad85745db18d883, type: 2}
+  - {fileID: 11400000, guid: da2cb316087c986239013fb173516ed7, type: 2}
+  - {fileID: 11400000, guid: d21e74b024d8d756498853a69a1f1e33, type: 2}
+  upperTracing: {fileID: 11400000, guid: bd2379f26379f97008c95c2fbacbb104, type: 2}
+  lowerTracing: {fileID: 11400000, guid: b0f7db32136d52e68aaab4d10b3ce8da, type: 2}
+  adventure: {fileID: 11400000, guid: 2cccb1a650f80e2249122660c66ea036, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.y.name
+  phonemeAudioKey: letter.y.sound
+  introAudioKey: letter.y.intro

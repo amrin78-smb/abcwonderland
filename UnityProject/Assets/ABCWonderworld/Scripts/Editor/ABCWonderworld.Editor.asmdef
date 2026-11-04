@@ -1,0 +1,7 @@
+{
+  "name": "ABCWonderworld.Editor",
+  "rootNamespace": "ABCWonderworld.EditorTools",
+  "references": ["ABCWonderworld.Runtime", "Unity.InputSystem", "UnityEngine.UI", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

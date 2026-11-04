@@ -1,0 +1,4 @@
+Placeholder pictures: Noto Emoji by Google, https://github.com/googlefonts/noto-emoji
+Licence: README states image resources are Apache-2.0; repository root LICENSE is OFL-1.1 (both in LICENSE-noto-emoji.txt).
+Both permit commercial use with notice. Confirm with legal review before release (Documentation/ASSET_REGISTER.md).
+Status: PLACEHOLDER. Replace with commissioned 3D/illustrated art before release.

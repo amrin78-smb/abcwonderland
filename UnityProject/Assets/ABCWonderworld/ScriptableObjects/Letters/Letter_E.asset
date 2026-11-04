@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_E
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_e
+  upper: 69
+  lower: 101
+  displayName: E
+  spokenName: Ee
+  phonemeDisplay: "/\u025B/"
+  phonemeIpa: "\u025B"
+  soundHint: e, as in egg
+  soundNote: 
+  characterId: character_e
+  worldId: world_happy_meadow
+  vocabulary:
+  - {fileID: 11400000, guid: acc23e807e4194373bba0872e774d3a6, type: 2}
+  - {fileID: 11400000, guid: 15e73ef928c8f985d8c560697d1aee87, type: 2}
+  - {fileID: 11400000, guid: 5756f74a29d27d1969aef9a497766bbb, type: 2}
+  upperTracing: {fileID: 11400000, guid: 4767ee5133a195c34b64c7e5347d7249, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 0296766292f67b9c796378ecb7889382, type: 2}
+  adventure: {fileID: 11400000, guid: b009f9f932b65f7f98a28a179f5895ae, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.e.name
+  phonemeAudioKey: letter.e.sound
+  introAudioKey: letter.e.intro

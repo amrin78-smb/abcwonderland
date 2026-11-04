@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_P
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_p
+  upper: 80
+  lower: 112
+  displayName: P
+  spokenName: Pee
+  phonemeDisplay: /p/
+  phonemeIpa: p
+  soundHint: p, as in pig
+  soundNote: 
+  characterId: character_p
+  worldId: world_dino_jungle
+  vocabulary:
+  - {fileID: 11400000, guid: 91fe1161d324b630cb2b669a1521f499, type: 2}
+  - {fileID: 11400000, guid: 13b0e332e28930c789f6abf51d2171e8, type: 2}
+  - {fileID: 11400000, guid: 2a5dff5a2067e7162a8aeccd0c84adc8, type: 2}
+  upperTracing: {fileID: 11400000, guid: b6ce71da34ab31dd78319f35eb3d499c, type: 2}
+  lowerTracing: {fileID: 11400000, guid: ac5b5d4376136e06cb9f985301493c3c, type: 2}
+  adventure: {fileID: 11400000, guid: 589582d99185cdbc3a9255179b3d8e23, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.p.name
+  phonemeAudioKey: letter.p.sound
+  introAudioKey: letter.p.intro

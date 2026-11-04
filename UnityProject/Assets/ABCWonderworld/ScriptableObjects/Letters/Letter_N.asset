@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_N
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_n
+  upper: 78
+  lower: 110
+  displayName: N
+  spokenName: En
+  phonemeDisplay: /n/
+  phonemeIpa: n
+  soundHint: n, as in nest
+  soundNote: 
+  characterId: character_n
+  worldId: world_candy_kingdom
+  vocabulary:
+  - {fileID: 11400000, guid: ad4b8403bc1f09de4b177617cb4260ed, type: 2}
+  - {fileID: 11400000, guid: 797fd1a64330770d8b29578150e691ab, type: 2}
+  - {fileID: 11400000, guid: 5075d2d0882d62a17a4274338a3e0fae, type: 2}
+  upperTracing: {fileID: 11400000, guid: 939abfa580e2e0d27af42d93a8e67384, type: 2}
+  lowerTracing: {fileID: 11400000, guid: a798d0562daadf1619a825b17ecfc3c5, type: 2}
+  adventure: {fileID: 11400000, guid: adff183ef461347c9bec6a9462ddc042, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.n.name
+  phonemeAudioKey: letter.n.sound
+  introAudioKey: letter.n.intro

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_T
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_t
+  upper: 84
+  lower: 116
+  displayName: T
+  spokenName: Tee
+  phonemeDisplay: /t/
+  phonemeIpa: t
+  soundHint: t, as in turtle
+  soundNote: 
+  characterId: character_t
+  worldId: world_dino_jungle
+  vocabulary:
+  - {fileID: 11400000, guid: 00231e9858c03c63f9696c60671fe932, type: 2}
+  - {fileID: 11400000, guid: 977cca5bab54aeafb911d0803e48f2fc, type: 2}
+  - {fileID: 11400000, guid: 38faf577019cbe57f99a3cd8a53d3613, type: 2}
+  upperTracing: {fileID: 11400000, guid: dbdf7772fc85ad18887518025fc0f987, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 47dc33da73ee4a3738974b4a8116ec46, type: 2}
+  adventure: {fileID: 11400000, guid: b9fecf0fdd507626293d70fae2423896, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.t.name
+  phonemeAudioKey: letter.t.sound
+  introAudioKey: letter.t.intro

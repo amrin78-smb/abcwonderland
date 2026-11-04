@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_H
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_h
+  upper: 72
+  lower: 104
+  displayName: H
+  spokenName: Aitch
+  phonemeDisplay: /h/
+  phonemeIpa: h
+  soundHint: h, as in hat
+  soundNote: 
+  characterId: character_h
+  worldId: world_bubble_bay
+  vocabulary:
+  - {fileID: 11400000, guid: 7d37b1c8f0b4036a7971884b211c8e18, type: 2}
+  - {fileID: 11400000, guid: 235890c8b04f7d6609361069950b66d5, type: 2}
+  - {fileID: 11400000, guid: 4437cb0994cc86acba60eb5653901ffd, type: 2}
+  upperTracing: {fileID: 11400000, guid: 35f89d9096b7e5860b5d0795a7a97388, type: 2}
+  lowerTracing: {fileID: 11400000, guid: f23913395892d0d3988fc7528aa40cb5, type: 2}
+  adventure: {fileID: 11400000, guid: 83d80525daf5c395b9d2d1797c11f05e, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.h.name
+  phonemeAudioKey: letter.h.sound
+  introAudioKey: letter.h.intro

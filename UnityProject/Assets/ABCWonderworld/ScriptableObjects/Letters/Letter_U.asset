@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_U
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_u
+  upper: 85
+  lower: 117
+  displayName: U
+  spokenName: You
+  phonemeDisplay: "/\u028C/"
+  phonemeIpa: "\u028C"
+  soundHint: u, as in up
+  soundNote: "Short U (/\u028C/) is the beginner sound. 'Unicorn' begins with long
+    U (/ju\u02D0/, the letter's name); it is shown as a U word but not used to teach
+    /\u028C/."
+  characterId: character_u
+  worldId: world_rainbow_mountain
+  vocabulary:
+  - {fileID: 11400000, guid: ed864939313cb396d817754f40035350, type: 2}
+  - {fileID: 11400000, guid: 5b4f08b1dee444c00bd3531ca749afc7, type: 2}
+  - {fileID: 11400000, guid: e3474d4cf1f698511acaae4961f4ffc5, type: 2}
+  upperTracing: {fileID: 11400000, guid: d987d0fb1f132d393b5bad12add8b2df, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 5dfd054c6a92d7723b3b4183d8ac9ecc, type: 2}
+  adventure: {fileID: 11400000, guid: 6ab0ce72681d1f7819b318160f326ed2, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.u.name
+  phonemeAudioKey: letter.u.sound
+  introAudioKey: letter.u.intro

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_Z
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_z
+  upper: 90
+  lower: 122
+  displayName: Z
+  spokenName: Zee
+  phonemeDisplay: /z/
+  phonemeIpa: z
+  soundHint: z, as in zebra
+  soundNote: 
+  characterId: character_z
+  worldId: world_rainbow_mountain
+  vocabulary:
+  - {fileID: 11400000, guid: b3052940f33022a669dc19c6230ec266, type: 2}
+  - {fileID: 11400000, guid: 3a883588d0a926efdb4989a52f0acf63, type: 2}
+  - {fileID: 11400000, guid: 0e97adf4967cedeccae4b720bd40f77a, type: 2}
+  upperTracing: {fileID: 11400000, guid: 54eae9de7d77dff1ab55d1ad51b54b9b, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 8f329636d5cfea9c1ae20e6714f238f3, type: 2}
+  adventure: {fileID: 11400000, guid: 3a85a807ad6032dd1b63cbec1be4db57, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.z.name
+  phonemeAudioKey: letter.z.sound
+  introAudioKey: letter.z.intro

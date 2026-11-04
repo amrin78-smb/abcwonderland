@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc716db3e24a07d46b61600b0c197275, type: 3}
+  m_Name: UiSkin
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.UI.UiSkin
+  font: {fileID: 12800000, guid: bd6e0dcd117c3198ab2c1c0f03b009c3, type: 3}
+  rounded: {fileID: 21300000, guid: d6c3f5e4fc5eb32b793cee792ed85fb1, type: 3}
+  circle: {fileID: 21300000, guid: 7ce704f97544b9148a23d7e439bb3f0a, type: 3}
+  ring: {fileID: 21300000, guid: c575e85976973c0a884facf1ff77d3eb, type: 3}
+  star: {fileID: 21300000, guid: 1e77dbafda914ee72a9e83eea10ab4ac, type: 3}
+  iconHome: {fileID: 21300000, guid: de2ac0a2af01531b5bba923ed2d6e953, type: 3}
+  iconBack: {fileID: 21300000, guid: 0bcff9fd5e03e0087890774d83efc2ce, type: 3}
+  iconSpeaker: {fileID: 21300000, guid: 2a5a406b10182a3c1a3f8861344ebaa9, type: 3}
+  iconPlay: {fileID: 21300000, guid: 0aebc2934780bc25fbf408363b990cc5, type: 3}
+  iconPause: {fileID: 21300000, guid: b8b6214ec497a162caf9d9e93b55f6a7, type: 3}
+  iconLock: {fileID: 21300000, guid: 6449120c3b2aba0e4bd351c26e338dd1, type: 3}
+  iconCheck: {fileID: 21300000, guid: 1a204712c6df34d3cb6db9227c3b5a81, type: 3}
+  iconArrow: {fileID: 21300000, guid: e3e1fb58d7330961e99999e38eab80cc, type: 3}
+  iconHand: {fileID: 21300000, guid: 13d8483b411851126b2c67bfeaadb5dd, type: 3}
+  iconBook: {fileID: 21300000, guid: 506c07cbe92ad8e0fadd4d3afc530c30, type: 3}
+  iconMusic: {fileID: 21300000, guid: 8ee38fdebfc76f3d2833bf59ffe28b06, type: 3}
+  iconPuzzle: {fileID: 21300000, guid: 31b7f919cc611fbc480c372b8e464a94, type: 3}
+  iconPencil: {fileID: 21300000, guid: c56b0fbb41eaf41099783d70cd0c54e1, type: 3}
+  iconSearch: {fileID: 21300000, guid: 00836923bd7c6baccac4e229772fd788, type: 3}
+  iconMatch: {fileID: 21300000, guid: 4544e76fa4c6e40dd922d900b5486481, type: 3}
+  iconStarOutline: {fileID: 21300000, guid: 09eacf974046fa430941583920437c73, type: 3}
+  iconRefresh: {fileID: 21300000, guid: 62907ecdb09d3a2e9ac19f5079ee9653, type: 3}
+  cream: {r: 1, g: 0.96, b: 0.88, a: 1}
+  ink: {r: 0.22, g: 0.2, b: 0.32, a: 1}
+  primary: {r: 1, g: 0.55, b: 0.25, a: 1}
+  secondary: {r: 0.3, g: 0.7, b: 0.95, a: 1}
+  success: {r: 0.35, g: 0.8, b: 0.4, a: 1}
+  gentle: {r: 1, g: 0.8, b: 0.35, a: 1}

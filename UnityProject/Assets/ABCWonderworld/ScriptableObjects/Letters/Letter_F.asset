@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_F
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_f
+  upper: 70
+  lower: 102
+  displayName: F
+  spokenName: Eff
+  phonemeDisplay: /f/
+  phonemeIpa: f
+  soundHint: f, as in fish
+  soundNote: 
+  characterId: character_f
+  worldId: world_bubble_bay
+  vocabulary:
+  - {fileID: 11400000, guid: a02b52d35b33453cf89624e05fe593aa, type: 2}
+  - {fileID: 11400000, guid: b86b179c3a85ad495bc8572581d4088a, type: 2}
+  - {fileID: 11400000, guid: 9178c4bc225046b018c2ccfa2b04037a, type: 2}
+  upperTracing: {fileID: 11400000, guid: 4e248935de196799ebd93a84e54f731a, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 5d664b3ed57ac857ba6bd2943a4b0acf, type: 2}
+  adventure: {fileID: 11400000, guid: f64b25f04fd61322e80ad891b184f104, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.f.name
+  phonemeAudioKey: letter.f.sound
+  introAudioKey: letter.f.intro

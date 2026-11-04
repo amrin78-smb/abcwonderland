@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efd79472ee2bf09848becb1a38ed5f, type: 3}
+  m_Name: Character_P
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.CharacterDefinition
+  id: character_p
+  displayName: Poppy Penguin
+  letterId: letter_p
+  personality: Funny and adventurous
+  themeObject: Penguin
+  primaryColor: {r: 0.23921569, g: 0.2901961, b: 0.41960785, a: 1}
+  accentColor: {r: 1, g: 0.62352943, b: 0.10980392, a: 1}
+  prefab: {fileID: 3389262735861080018, guid: 6bd03268f49052dcd83b274189aeabd3, type: 3}
+  portrait: {fileID: 21300000, guid: 468dbe0000748d355ba30eb0b07a65e6, type: 3}
+  introAudioKey: letter.p.intro
+  artStatus: 1

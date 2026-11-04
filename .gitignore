@@ -1,0 +1,42 @@
+# Unity generated
+UnityProject/[Ll]ibrary/
+UnityProject/[Tt]emp/
+UnityProject/[Oo]bj/
+UnityProject/.utmp/
+UnityProject/[Ll]ogs/
+UnityProject/[Uu]ser[Ss]ettings/
+UnityProject/[Bb]uild/
+UnityProject/[Bb]uilds/
+UnityProject/MemoryCaptures/
+UnityProject/*.csproj
+UnityProject/*.sln
+UnityProject/*.slnx
+UnityProject/.vs/
+UnityProject/.vscode/
+UnityProject/.idea/
+UnityProject/*.pidb
+UnityProject/*.booproj
+UnityProject/*.svd
+UnityProject/*.userprefs
+UnityProject/*.unityproj
+UnityProject/sysinfo.txt
+UnityProject/crashlytics-build.properties
+*.pdb.meta
+*.mdb.meta
+
+# Build outputs and logs (repo root)
+/Builds/
+/Logs/
+
+# Signing material must never be committed
+*.keystore
+*.jks
+*.p12
+keystore.properties
+
+# Tool caches
+__pycache__/
+*.pyc
+.DS_Store
+.claude-web-files/
+.claude-web-images/

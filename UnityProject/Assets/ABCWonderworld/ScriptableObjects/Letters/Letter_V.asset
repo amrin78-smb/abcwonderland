@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_V
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_v
+  upper: 86
+  lower: 118
+  displayName: V
+  spokenName: Vee
+  phonemeDisplay: /v/
+  phonemeIpa: v
+  soundHint: v, as in van
+  soundNote: 
+  characterId: character_v
+  worldId: world_rainbow_mountain
+  vocabulary:
+  - {fileID: 11400000, guid: fac0223950735280ba5f1a8a85eeb8cb, type: 2}
+  - {fileID: 11400000, guid: 678811bb5138e95e18952709d1133e2b, type: 2}
+  - {fileID: 11400000, guid: 91af5e79024a84054834d35a3792f146, type: 2}
+  upperTracing: {fileID: 11400000, guid: 0f1cf06e0f4a8a4dcac0b1b19804a2e3, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 31d2fe6e9248102539b2de67a3514c62, type: 2}
+  adventure: {fileID: 11400000, guid: f7303014271c5575b8269e721f5b36d2, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.v.name
+  phonemeAudioKey: letter.v.sound
+  introAudioKey: letter.v.intro

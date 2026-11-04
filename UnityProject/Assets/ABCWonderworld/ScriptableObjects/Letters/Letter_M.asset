@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_M
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_m
+  upper: 77
+  lower: 109
+  displayName: M
+  spokenName: Em
+  phonemeDisplay: /m/
+  phonemeIpa: m
+  soundHint: m, as in moon
+  soundNote: 
+  characterId: character_m
+  worldId: world_candy_kingdom
+  vocabulary:
+  - {fileID: 11400000, guid: b2b775ab4d9a9376bb99529ff7d86e56, type: 2}
+  - {fileID: 11400000, guid: 3aeac3bb8f85a300e8dd18e0da697b3b, type: 2}
+  - {fileID: 11400000, guid: 2a49120b6bac938df94ba03faa4d34b4, type: 2}
+  upperTracing: {fileID: 11400000, guid: 69b71573716c8c795a6c4c2e58a67034, type: 2}
+  lowerTracing: {fileID: 11400000, guid: d3b5c25e7dfb76c70941dd953146670a, type: 2}
+  adventure: {fileID: 11400000, guid: 276b587a7df8aed5b8f4c1da2d1ed0d0, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.m.name
+  phonemeAudioKey: letter.m.sound
+  introAudioKey: letter.m.intro

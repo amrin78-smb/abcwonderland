@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_J
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_j
+  upper: 74
+  lower: 106
+  displayName: J
+  spokenName: Jay
+  phonemeDisplay: "/d\u0292/"
+  phonemeIpa: "d\u0292"
+  soundHint: j, as in jam
+  soundNote: 
+  characterId: character_j
+  worldId: world_bubble_bay
+  vocabulary:
+  - {fileID: 11400000, guid: 65e8586e23041e6d4918da9757a85d7c, type: 2}
+  - {fileID: 11400000, guid: 43cec18d494e4d1c689a99244d8d1c3a, type: 2}
+  - {fileID: 11400000, guid: 54f64fc5dbab6bd39a04882411cfbda3, type: 2}
+  upperTracing: {fileID: 11400000, guid: 1616e126ba36f02fa86b0d4f5dc37e3b, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 739680f322ec7c112a00974c4121b2f4, type: 2}
+  adventure: {fileID: 11400000, guid: a13127f48a7233bd49452f5fdcaf0b32, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.j.name
+  phonemeAudioKey: letter.j.sound
+  introAudioKey: letter.j.intro

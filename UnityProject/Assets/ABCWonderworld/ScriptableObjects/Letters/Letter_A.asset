@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_A
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_a
+  upper: 65
+  lower: 97
+  displayName: A
+  spokenName: Ay
+  phonemeDisplay: "/\xE6/"
+  phonemeIpa: "\xE6"
+  soundHint: a, as in apple
+  soundNote: 
+  characterId: character_a
+  worldId: world_happy_meadow
+  vocabulary:
+  - {fileID: 11400000, guid: d93e6063adad56ec7a9e3576454e4286, type: 2}
+  - {fileID: 11400000, guid: 65d9e4189d0daeaab89d4268ba73444d, type: 2}
+  - {fileID: 11400000, guid: 4f78c4603f6dbc751b0a58dc3e36d72e, type: 2}
+  upperTracing: {fileID: 11400000, guid: 01cfc5dfe2fd70810aa28b3d4c3cfcd8, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 67ccdcc9315e9b66c9ef22d980e9f377, type: 2}
+  adventure: {fileID: 11400000, guid: 65d7fb5cc5bcd569dbef65ac93d736af, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.a.name
+  phonemeAudioKey: letter.a.sound
+  introAudioKey: letter.a.intro

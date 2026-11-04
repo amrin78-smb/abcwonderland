@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab55dee3b8cb8a9bb58b653ff60a9e, type: 3}
+  m_Name: MaterialLibrary
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Characters.MaterialLibrary
+  baseLit: {fileID: 2100000, guid: 276b363322a8cdabaa434fd81a59f648, type: 2}
+  unlit: {fileID: 2100000, guid: 3c050bd45bbea9e959b5fccc5e187ac7, type: 2}
+  glossy: {fileID: 2100000, guid: e7a54d5f4e703cac2bdd5a0cbc288673, type: 2}

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_I
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_i
+  upper: 73
+  lower: 105
+  displayName: I
+  spokenName: Eye
+  phonemeDisplay: "/\u026A/"
+  phonemeIpa: "\u026A"
+  soundHint: i, as in insect
+  soundNote: "Short I (/\u026A/) is the beginner sound. 'Ice cream' begins with long
+    I (/a\u026A/, the letter's name); it is shown as an I word but not used to teach
+    /\u026A/."
+  characterId: character_i
+  worldId: world_bubble_bay
+  vocabulary:
+  - {fileID: 11400000, guid: ffd02a65d47159d15a2637472847d7cf, type: 2}
+  - {fileID: 11400000, guid: a90bace172ba42e3cbf9d29b4159b622, type: 2}
+  - {fileID: 11400000, guid: f4aba1bb2d52bd7148b0b707fcb2464c, type: 2}
+  upperTracing: {fileID: 11400000, guid: 491ce6bf41e3ecff5a20d1caa0b13dd2, type: 2}
+  lowerTracing: {fileID: 11400000, guid: 48f2c041cd50b2d31af033414676381b, type: 2}
+  adventure: {fileID: 11400000, guid: dc0e39546c209aa0ab7123330d043a18, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.i.name
+  phonemeAudioKey: letter.i.sound
+  introAudioKey: letter.i.intro

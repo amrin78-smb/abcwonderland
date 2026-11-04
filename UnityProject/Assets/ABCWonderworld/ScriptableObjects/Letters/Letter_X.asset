@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e733e27ff02baa6748cee4c8fe5a2ad1, type: 3}
+  m_Name: Letter_X
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.LetterDefinition
+  id: letter_x
+  upper: 88
+  lower: 120
+  displayName: X
+  spokenName: Ex
+  phonemeDisplay: /ks/
+  phonemeIpa: ks
+  soundHint: x, as at the end of fox
+  soundNote: "X usually says /ks/ at the END of words (fox, box). Very few common
+    words begin with that sound. 'Xylophone' begins with a /z/ sound and 'x-ray'
+    begins with the letter name (/\u025Bks/). The game says: 'X says /ks/, like at
+    the end of fox.' It never claims these examples start with /ks/."
+  characterId: character_x
+  worldId: world_rainbow_mountain
+  vocabulary:
+  - {fileID: 11400000, guid: f4a114a0f63eff4839db30aaa608faa6, type: 2}
+  - {fileID: 11400000, guid: f2f1d09c27bbcaf2fa9b3eaac81bb072, type: 2}
+  - {fileID: 11400000, guid: 0cbaea7706e23d3a2b0c32b21e7ecb9c, type: 2}
+  upperTracing: {fileID: 11400000, guid: 20b7cbfbe157c9e749dfaf6eb7e7b4db, type: 2}
+  lowerTracing: {fileID: 11400000, guid: b6992ef09d2e8f27898d8feb038a8bff, type: 2}
+  adventure: {fileID: 11400000, guid: c25e7e617e1d970abbb53d98e41b3f21, type: 2}
+  reviewStatus: pending-expert-review
+  nameAudioKey: letter.x.name
+  phonemeAudioKey: letter.x.sound
+  introAudioKey: letter.x.intro

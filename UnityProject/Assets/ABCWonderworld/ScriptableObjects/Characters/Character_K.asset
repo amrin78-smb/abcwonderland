@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efd79472ee2bf09848becb1a38ed5f, type: 3}
+  m_Name: Character_K
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.CharacterDefinition
+  id: character_k
+  displayName: Kiki Kite
+  letterId: letter_k
+  personality: Free-spirited
+  themeObject: Kite
+  primaryColor: {r: 0, g: 0.7607843, b: 0.65882355, a: 1}
+  accentColor: {r: 1, g: 0.47843137, b: 0.63529414, a: 1}
+  prefab: {fileID: 8346895222390781904, guid: a37b61acf3a819c47a8ca721e59a5443, type: 3}
+  portrait: {fileID: 21300000, guid: 4b56fc271fcb2356ca2a8527bf8d1441, type: 3}
+  introAudioKey: letter.k.intro
+  artStatus: 1

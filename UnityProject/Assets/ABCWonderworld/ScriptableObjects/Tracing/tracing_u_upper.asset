@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4d4001d13c9012b92e71a8458c077b, type: 3}
+  m_Name: tracing_u_upper
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.TracingDefinition
+  id: tracing_u_upper
+  letterId: letter_u
+  letterCase: 0
+  strokes:
+  - points:
+    - {x: 0, y: 1}
+    - {x: 0, y: 0.32}
+    - {x: 0.0047096037, y: 0.26443255}
+    - {x: 0.01869529, y: 0.21055354}
+    - {x: 0.04153213, y: 0.16000001}
+    - {x: 0.07252621, y: 0.11430797}
+    - {x: 0.11073587, y: 0.07486574}
+    - {x: 0.15500003, y: 0.042871855}
+    - {x: 0.20397379, y: 0.019298343}
+    - {x: 0.25616908, y: 0.004861507}
+    - {x: 0.31, y: 0}
+    - {x: 0.36383092, y: 0.004861526}
+    - {x: 0.41602623, y: 0.019298362}
+    - {x: 0.46499997, y: 0.042871855}
+    - {x: 0.5092641, y: 0.07486576}
+    - {x: 0.5474737, y: 0.11430792}
+    - {x: 0.57846785, y: 0.15999994}
+    - {x: 0.6013047, y: 0.21055348}
+    - {x: 0.6152904, y: 0.2644325}
+    - {x: 0.62, y: 0.32000005}
+    - {x: 0.62, y: 1}
+  tolerance: 0.16
+  completionThreshold: 0.85
+  status: 2

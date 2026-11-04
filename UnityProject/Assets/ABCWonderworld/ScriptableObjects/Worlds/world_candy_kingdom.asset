@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3c9e4460dec1477a67870dac9fe3f5, type: 3}
+  m_Name: world_candy_kingdom
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.WorldDefinition
+  id: world_candy_kingdom
+  displayName: Candy Kingdom
+  description: Candy-coloured architecture, gumdrop trees, chocolate hills and rainbow
+    bridges.
+  order: 2
+  letterIds:
+  - letter_k
+  - letter_l
+  - letter_m
+  - letter_n
+  - letter_o
+  sceneName: World_candy_kingdom
+  skyColor: {r: 1, g: 0.827451, b: 0.9254902, a: 1}
+  groundColor: {r: 0.7176471, g: 0.46666667, b: 0.29411766, a: 1}
+  accentColor: {r: 1, g: 0.37254903, b: 0.63529414, a: 1}
+  portalArt: {fileID: 0}
+  nameAudioKey: world.world_candy_kingdom.name
+  ambientAudioKey: 
+  environmentStatus: 1

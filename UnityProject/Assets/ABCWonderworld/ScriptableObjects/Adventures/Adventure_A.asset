@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d09b7e313f668829a54c99c38e2ba9, type: 3}
+  m_Name: Adventure_A
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.AdventureDefinition
+  id: adventure_a
+  letterId: letter_a
+  title: Apple Adventure
+  archetype: 0
+  propKey: 1f34e
+  propSprite: {fileID: 21300000, guid: e62b58cb6963672c2af6853ac912e580, type: 3}
+  targetCount: 5
+  instruction: Tap the apples to fill the basket!
+  instructionAudioKey: adventure.a.instruction
+  rewardStars: 1

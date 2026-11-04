@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3c9e4460dec1477a67870dac9fe3f5, type: 3}
+  m_Name: world_rainbow_mountain
+  m_EditorClassIdentifier: ABCWonderworld.Runtime::ABCWonderworld.Content.WorldDefinition
+  id: world_rainbow_mountain
+  displayName: Rainbow Mountain
+  description: Floating islands, mountains, clouds, rainbow paths and gentle space-inspired
+    discoveries.
+  order: 4
+  letterIds:
+  - letter_u
+  - letter_v
+  - letter_w
+  - letter_x
+  - letter_y
+  - letter_z
+  sceneName: World_rainbow_mountain
+  skyColor: {r: 0.7882353, g: 0.7607843, b: 1, a: 1}
+  groundColor: {r: 0.9137255, g: 0.89411765, b: 1, a: 1}
+  accentColor: {r: 0.4862745, g: 0.42352942, b: 1, a: 1}
+  portalArt: {fileID: 0}
+  nameAudioKey: world.world_rainbow_mountain.name
+  ambientAudioKey: 
+  environmentStatus: 1
