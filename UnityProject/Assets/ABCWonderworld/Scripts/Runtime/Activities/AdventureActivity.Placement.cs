@@ -82,8 +82,10 @@ namespace ABCWonderworld.Activities
             Audio.PlaySfx("tap");
             if (_selectThenTap)
             {
-                if (_selectedPiece != null && _selectedPiece.rt != null) _selectedPiece.rt.localScale = Vector3.one;
+                Deselect();
                 _selectedPiece = p;
+                // The idle pulse would overwrite the "picked up" scale every frame, so pause it while selected.
+                if (p.rt.TryGetComponent(out Attention at)) at.enabled = false;
                 p.rt.localScale = Vector3.one * 1.15f;
                 p.rt.SetAsLastSibling();
                 return;
@@ -107,6 +109,7 @@ namespace ABCWonderworld.Activities
 
         private void DropPiece(Piece p, Vector2 screen)
         {
+            if (p.placed) return;
             Slot best = null;
             float bestD = float.MaxValue;
             foreach (Slot s in _slots)
@@ -131,12 +134,24 @@ namespace ABCWonderworld.Activities
         private void Return(Piece p)
         {
             Vector2 from = p.rt.anchoredPosition;
+            if (_selectedPiece == p) Deselect();
             p.rt.localScale = Vector3.one;
+            if (!p.placed && p.rt.TryGetComponent(out Attention at)) at.enabled = true;
             Tween.Run(this, 0.3f, k => { if (p.rt != null) p.rt.anchoredPosition = Vector2.Lerp(from, p.home, Tween.EaseOut(k)); });
-            if (_selectedPiece == p) _selectedPiece = null;
+        }
+
+        private void Deselect()
+        {
+            Piece prev = _selectedPiece;
+            _selectedPiece = null;
+            if (prev == null || prev.rt == null) return;
+            prev.rt.localScale = Vector3.one;
+            if (!prev.placed && prev.rt.TryGetComponent(out Attention at)) at.enabled = true;
         }
 
         private System.Action<Piece, Slot> _onPlaced;
+        /// <summary>Where a placed piece rests relative to its slot centre (e.g. a scoop sits on top of its cone).</summary>
+        private System.Func<Piece, Slot, Vector2> _placeOffset;
 
         private void Place(Piece p, Slot s)
         {
@@ -145,7 +160,8 @@ namespace ABCWonderworld.Activities
             if (_selectedPiece == p) _selectedPiece = null;
             Destroy(p.rt.GetComponent<Attention>());
             Vector2 from = p.rt.anchoredPosition;
-            Vector2 to = s.rt.anchoredPosition + (s.capacity > 1 ? new Vector2((s.filled - (s.capacity + 1) * 0.5f) * 70f, 10f) : Vector2.zero);
+            Vector2 to = s.rt.anchoredPosition + (s.capacity > 1 ? new Vector2((s.filled - (s.capacity + 1) * 0.5f) * 70f, 10f) : Vector2.zero)
+                         + (_placeOffset?.Invoke(p, s) ?? Vector2.zero);
             p.rt.SetAsLastSibling();
             p.rt.localScale = Vector3.one;
             Audio.PlaySfx("chime", 0.8f);
@@ -253,7 +269,9 @@ namespace ABCWonderworld.Activities
             for (int i = 0; i < n; i++)
             {
                 int c = order[i];
-                Slot s = AddSlot("Target_" + c, target, new Vector2((i - (n - 1) * 0.5f) * 270, -230), new Vector2(230, 230), "pair" + c, crowns ? PairColors[c] : Color.white);
+                // Targets carry their pair colour (the instruction says "same colour"), plus a shape mark.
+                Color tint = crowns ? PairColors[c] : Color.Lerp(PairColors[c], Color.white, 0.25f);
+                Slot s = AddSlot("Target_" + c, target, new Vector2((i - (n - 1) * 0.5f) * 270, -230), new Vector2(230, 230), "pair" + c, tint);
                 Mark(s.rt, c, crowns ? new Vector2(0, -20) : new Vector2(0, 20));
             }
             for (int i = 0; i < n; i++)
@@ -262,7 +280,7 @@ namespace ABCWonderworld.Activities
                 Mark(p.rt, i, Vector2.zero);
             }
             _goal = n;
-            _onPlaced = (p, s) => { p.rt.anchoredPosition = s.rt.anchoredPosition + new Vector2(0, crowns ? 70 : 110); };
+            _placeOffset = (p, s) => new Vector2(0, crowns ? 70 : 110);
             _autoStep = AutoPlace;
             _ready = true;
         }
@@ -369,21 +387,32 @@ namespace ABCWonderworld.Activities
     }
 
     /// <summary>Drag a rect freely (or horizontally) inside its parent.</summary>
-    public sealed class FreeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler
+    public sealed class FreeDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public bool horizontalOnly;
         public System.Action onMoved;
         private Vector2 _offset;
+        private int _pointer = int.MinValue;
 
         public void OnBeginDrag(PointerEventData e)
         {
+            if (!ABCWonderworld.Input.PointerGate.TryClaim(e)) return;
+            _pointer = e.pointerId;
             var rt = (RectTransform)transform;
             RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)rt.parent, e.position, e.pressEventCamera, out Vector2 l);
             _offset = rt.anchoredPosition - l;
         }
 
+        public void OnEndDrag(PointerEventData e)
+        {
+            if (e.pointerId != _pointer) return;
+            _pointer = int.MinValue;
+            ABCWonderworld.Input.PointerGate.Release(e);
+        }
+
         public void OnDrag(PointerEventData e)
         {
+            if (e.pointerId != _pointer) return;
             var rt = (RectTransform)transform;
             var parent = (RectTransform)rt.parent;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parent, e.position, e.pressEventCamera, out Vector2 l);

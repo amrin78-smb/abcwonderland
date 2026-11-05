@@ -20,6 +20,23 @@ namespace ABCWonderworld.Tests
         }
 
         [Test]
+        public void CharacterPrefabsHaveNoMissingScriptsAndCanAnimate()
+        {
+            // A MonoBehaviour declared in a file with a different name cannot be saved into a prefab: it silently
+            // becomes a "missing script" and the character never blinks, talks or dances.
+            foreach (LetterDefinition l in _c.letters)
+            {
+                UnityEngine.GameObject prefab = _c.CharacterFor(l)?.prefab;
+                Assert.NotNull(prefab, l.id);
+                int missing = prefab.GetComponentsInChildren<UnityEngine.Transform>(true)
+                    .Sum(t => GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject));
+                Assert.That(missing, Is.EqualTo(0), l.id + " prefab has missing scripts");
+                Assert.NotNull(prefab.GetComponent<Characters.ProceduralCharacterAnimator>(), l.id + " has no animator");
+                Assert.NotNull(prefab.GetComponent<Characters.LetterCharacter>(), l.id);
+            }
+        }
+
+        [Test]
         public void ValidatorReportsNoErrors()
         {
             var errors = ContentValidator.Validate(_c).Where(i => i.Severity == IssueSeverity.Error).ToList();

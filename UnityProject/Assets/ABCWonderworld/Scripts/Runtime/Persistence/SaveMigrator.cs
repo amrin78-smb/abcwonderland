@@ -43,6 +43,7 @@ namespace ABCWonderworld.Persistence
             d.activityCounts ??= new System.Collections.Generic.List<ActivityCountData>();
             d.difficulty ??= new System.Collections.Generic.List<DifficultyStateData>();
             foreach (DifficultyStateData ds in d.difficulty) ds.level = Math.Max(0, Math.Min(AdaptiveLevels.Max, ds.level));
+            d.totalPlaySeconds = Math.Max(0, d.totalPlaySeconds); // older builds could save -1
             d.rewards.unlocked ??= new System.Collections.Generic.List<string>();
             d.rewards.seenUnlocks ??= new System.Collections.Generic.List<string>();
             d.rewards.equipped ??= new System.Collections.Generic.List<string>();

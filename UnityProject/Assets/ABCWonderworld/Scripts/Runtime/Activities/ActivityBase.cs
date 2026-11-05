@@ -91,6 +91,10 @@ namespace ABCWonderworld.Activities
         /// </summary>
         public abstract IEnumerator AutoPlay();
 
+        /// <summary>The child tapped the 3D letter character. Return true if the activity used the tap
+        /// (then the default "hello, I'm …" line is not played).</summary>
+        public virtual bool OnCharacterTapped() => false;
+
         // ------------------------------------------------------------------ helpers
         protected void Say(string key, VoiceMode mode = VoiceMode.Replace, Action done = null)
         {

@@ -28,13 +28,14 @@ namespace ABCWonderworld.Activities
         private bool _accepting;
         private int _wrong;
         private const float GlyphSize = 560f;
+        private const float HomeScale = 0.7f;
 
         protected override void OnBegin()
         {
             _area = UiFactory.Rect("PuzzleArea", Ctx.UiRoot);
             UiFactory.Place(_area, new Vector2(0.6f, 0.47f), Vector2.zero, new Vector2(1250, 880));
             Progress.RecordExposure(Letter.id, Type);
-            Progress.RecordPractice(Letter.id, Type, Ctx.Case);
+            Progress.RecordPractice(Letter.id, Type, Ctx.Level >= 2 ? LetterCase.Lower : Ctx.Case);
             StartJigsaw();
         }
 
@@ -57,7 +58,13 @@ namespace ABCWonderworld.Activities
             if (pieces == 4) { cuts.Add(new Rect(0, 0.5f, 0.5f, 0.5f)); cuts.Add(new Rect(0.5f, 0.5f, 0.5f, 0.5f)); cuts.Add(new Rect(0, 0, 0.5f, 0.5f)); cuts.Add(new Rect(0.5f, 0, 0.5f, 0.5f)); }
             else for (int i = 0; i < pieces; i++) cuts.Add(new Rect(i / (float)pieces, 0, 1f / pieces, 1));
 
-            Vector2[] homes = { new Vector2(-470, 250), new Vector2(-430, -40), new Vector2(-470, -300), new Vector2(-230, 120) };
+            // Waiting spots left of the board (board spans x -100..540). Pieces sit side by side, never overlapping,
+            // and stay inside the 880-tall area: bands are 392 tall at HomeScale, quadrants 196.
+            Vector2[] homes = pieces == 4
+                ? new[] { new Vector2(-480, 130), new Vector2(-250, 130), new Vector2(-480, -130), new Vector2(-250, -130) }
+                : pieces == 3
+                    ? new[] { new Vector2(-530, 0), new Vector2(-375, 0), new Vector2(-220, 0) }
+                    : new[] { new Vector2(-480, 0), new Vector2(-250, 0) };
             var order = Enumerable.Range(0, cuts.Count).OrderBy(_ => Ctx.Rng.Next()).ToList();
             for (int i = 0; i < cuts.Count; i++)
             {
@@ -76,7 +83,7 @@ namespace ABCWonderworld.Activities
                 g.rectTransform.anchoredPosition = new Vector2((0.5f - c.center.x) * GlyphSize, (0.5f - c.center.y) * GlyphSize);
                 Vector2 home = homes[order[i] % homes.Length];
                 hit.rectTransform.anchoredPosition = home;
-                hit.rectTransform.localScale = Vector3.one * 0.8f;
+                hit.rectTransform.localScale = Vector3.one * HomeScale;
                 int idx = i;
                 _pieces.Add((hit.rectTransform, home, target, false));
                 var drag = hit.gameObject.AddComponent<DragPiece>();
@@ -103,7 +110,7 @@ namespace ABCWonderworld.Activities
             {
                 if (p.rt == null) return;
                 p.rt.anchoredPosition = Vector2.Lerp(from, p.target, Tween.EaseOut(k));
-                p.rt.localScale = Vector3.one * Mathf.Lerp(0.8f, 1f, k);
+                p.rt.localScale = Vector3.one * Mathf.Lerp(HomeScale, 1f, k);
             });
             if (_pieces.All(x => x.placed)) StartCoroutine(JigsawDone());
         }
@@ -186,7 +193,7 @@ namespace ABCWonderworld.Activities
                 Tween.Wiggle(this, b.transform);
                 LetterDefinition chosen = S.Catalog.Letter(char.ToUpperInvariant(g));
                 SaySequence(new[] { chosen?.nameAudioKey, "vo.try_another" }.Where(k => k != null));
-                if (_wrong >= 2) _choices.First(c => c.g == _missing).b.gameObject.AddComponent<Attention>().amount = 0.12f;
+                if (_wrong >= 2) Attention.Ensure(_choices.First(c => c.g == _missing).b.gameObject, 0.12f);
                 return;
             }
             _accepting = false;
@@ -197,7 +204,7 @@ namespace ABCWonderworld.Activities
         {
             Progress.RecordRecognition(Letter.id, Type, char.IsUpper(_missing) ? LetterCase.Upper : LetterCase.Lower, true, _wrong + 1,
                 _wrong >= 2 ? Assistance.Hint : Assistance.None);
-            S.Difficulty.RecordRound(Type, _wrong, Assistance.None);
+            S.Difficulty.RecordRound(Type, _wrong, _wrong >= 2 ? Assistance.Hint : Assistance.None);
             Transform gap = _area.Find("Gap");
             Vector3 from = b.transform.position;
             Audio.PlaySfx("chime");

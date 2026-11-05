@@ -234,5 +234,57 @@ namespace ABCWonderworld.Tests
             Assert.That(_data.rewards.wonderStars, Is.EqualTo(0));
             Assert.That(_data.settings.musicVolume, Is.EqualTo(0.2f));
         }
+
+        // ---------------------------------------------------------------- bug-sweep regressions (2026-11-05)
+
+        [Test]
+        public void UnfinishedRoundCountsEveryWrongAttempt()
+        {
+            _p.RecordRecognition("letter_a", ActivityType.FindLetter, LetterCase.Upper, false, 3, Assistance.None);
+            LetterProgressData p = _data.letters.First(l => l.letterId == "letter_a");
+            Assert.That(p.recognitionIncorrect, Is.EqualTo(3), "an aborted round's attempts were all wrong");
+            _p.RecordRecognition("letter_a", ActivityType.FindLetter, LetterCase.Upper, true, 3, Assistance.None);
+            Assert.That(p.recognitionIncorrect, Is.EqualTo(5), "a correct round's last attempt was right");
+        }
+
+        [Test]
+        public void QuietExposureDoesNotFloodRecentActivity()
+        {
+            _p.RecordPractice("letter_b", ActivityType.Match, null);
+            int events = _data.recentEvents.Count;
+            for (int i = 0; i < 400; i++) _p.RecordExposure("letter_c", ActivityType.Music, logEvent: false);
+            Assert.That(_data.recentEvents.Count, Is.EqualTo(events));
+            Assert.That(_data.letters.First(l => l.letterId == "letter_c").exposures, Is.EqualTo(400));
+        }
+
+        [Test]
+        public void SnoozingTheBreakReminderKeepsLifetimePlayTime()
+        {
+            var s = new SessionService { ReminderMinutes = 1 };
+            for (int i = 0; i < 90; i++) s.Tick(1, false);
+            s.Snooze();
+            Assert.That(s.ActiveSeconds, Is.EqualTo(0));
+            Assert.That(s.TotalSeconds, Is.EqualTo(90));
+        }
+
+        [Test]
+        public void NegativePlayTimeFromOlderBuildsIsClamped()
+        {
+            _data.totalPlaySeconds = -1;
+            SaveMigrator.Sanitize(_data);
+            Assert.That(_data.totalPlaySeconds, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void NarrowScreensKeepTheSameHorizontalFraming()
+        {
+            const float fov = 40f;
+            Assert.That(World.KeepHorizontalFraming.FovFor(fov, 16f / 9f), Is.EqualTo(fov));
+            Assert.That(World.KeepHorizontalFraming.FovFor(fov, 20f / 9f), Is.EqualTo(fov), "wider screens are never narrowed");
+            float halfW(float v, float a) => UnityEngine.Mathf.Atan(UnityEngine.Mathf.Tan(v * 0.5f * UnityEngine.Mathf.Deg2Rad) * a);
+            float tablet = World.KeepHorizontalFraming.FovFor(fov, 4f / 3f);
+            Assert.That(tablet, Is.GreaterThan(fov));
+            Assert.That(halfW(tablet, 4f / 3f), Is.EqualTo(halfW(fov, 16f / 9f)).Within(1e-4f));
+        }
     }
 }

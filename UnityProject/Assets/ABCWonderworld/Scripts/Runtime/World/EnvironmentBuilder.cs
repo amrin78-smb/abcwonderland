@@ -27,9 +27,20 @@ namespace ABCWonderworld.World
         private static Mesh PrimMesh(PrimitiveType t)
         {
             if (Prims.TryGetValue(t, out Mesh m) && m != null) return m;
-            GameObject g = GameObject.CreatePrimitive(t);
-            m = g.GetComponent<MeshFilter>().sharedMesh;
-            Object.Destroy(g);
+            // Built-in meshes directly: CreatePrimitive also adds a collider (CapsuleCollider for capsules and
+            // cylinders), which IL2CPP engine-code stripping can remove, making CreatePrimitive fail on device.
+            string builtin = t switch
+            {
+                PrimitiveType.Cube => "Cube.fbx", PrimitiveType.Sphere => "Sphere.fbx", PrimitiveType.Capsule => "Capsule.fbx",
+                PrimitiveType.Cylinder => "Cylinder.fbx", PrimitiveType.Plane => "Plane.fbx", _ => "Quad.fbx"
+            };
+            m = Resources.GetBuiltinResource<Mesh>(builtin);
+            if (m == null)
+            {
+                GameObject g = GameObject.CreatePrimitive(t);
+                m = g.GetComponent<MeshFilter>().sharedMesh;
+                Object.Destroy(g);
+            }
             Prims[t] = m;
             return m;
         }
@@ -72,6 +83,10 @@ namespace ABCWonderworld.World
             cam.transform.position = camPos;
             cam.transform.LookAt(lookAt);
             cam.fieldOfView = fov;
+            // Scenes are framed for 16:9; on narrower screens (4:3 / 3:2 tablets) widen the vertical FOV so the
+            // same horizontal span stays visible and edge characters are not cut off.
+            if (!cam.TryGetComponent(out KeepHorizontalFraming keep)) keep = cam.gameObject.AddComponent<KeepHorizontalFraming>();
+            keep.Set(cam, fov);
             cam.clearFlags = CameraClearFlags.SolidColor;
             Color sky = w != null ? w.skyColor : new Color(0.62f, 0.86f, 1f);
             cam.backgroundColor = sky;
@@ -382,6 +397,9 @@ namespace ABCWonderworld.World
             Quaternion r0 = t.localRotation;
             float m = Tween.Motion;
             float dur = reaction == Reaction.FlyAway ? 2.2f : 0.7f;
+            // Billboards re-aim at the camera every frame, which would erase rotation reactions: drive the
+            // billboard's extra in-plane rotation instead (a Y-spin of a flat picture would look edge-on anyway).
+            t.TryGetComponent(out FaceCamera face);
             GameObject revealed = null;
             if (reaction == Reaction.Reveal && !string.IsNullOrEmpty(revealPicture))
             {
@@ -395,10 +413,16 @@ namespace ABCWonderworld.World
             {
                 switch (reaction)
                 {
-                    case Reaction.Wobble: t.localRotation = r0 * Quaternion.Euler(0, 0, Mathf.Sin(k * Mathf.PI * 6) * 8 * (1 - k) * m); break;
+                    case Reaction.Wobble:
+                        Quaternion w = Quaternion.Euler(0, 0, Mathf.Sin(k * Mathf.PI * 6) * 8 * (1 - k) * m);
+                        if (face != null) face.extra = w; else t.localRotation = r0 * w;
+                        break;
                     case Reaction.Grow:
                     case Reaction.Pop: t.localScale = s0 * (1 + Mathf.Sin(k * Mathf.PI) * 0.35f * Mathf.Max(0.4f, m)); break;
-                    case Reaction.Spin: t.localRotation = r0 * Quaternion.Euler(0, k * 360f * (m > 0.5f ? 1 : 0.25f), 0); break;
+                    case Reaction.Spin:
+                        float deg = k * 360f * (m > 0.5f ? 1 : 0.25f);
+                        if (face != null) face.extra = Quaternion.Euler(0, 0, -deg); else t.localRotation = r0 * Quaternion.Euler(0, deg, 0);
+                        break;
                     case Reaction.Hop: t.localPosition = p0 + Vector3.up * Mathf.Sin(k * Mathf.PI) * 0.8f * Mathf.Max(0.3f, m); break;
                     case Reaction.FlyAway: t.localPosition = p0 + new Vector3(Mathf.Sin(k * Mathf.PI * 2) * 2f, Mathf.Sin(k * Mathf.PI) * 2.5f, 0) * Mathf.Max(0.3f, m); break;
                     case Reaction.Reveal:
@@ -409,6 +433,7 @@ namespace ABCWonderworld.World
                 yield return null;
             }
             t.localPosition = p0; t.localScale = s0; t.localRotation = r0;
+            if (face != null) face.extra = Quaternion.identity;
             if (revealed != null)
             {
                 yield return new WaitForSeconds(1.5f);
@@ -420,11 +445,13 @@ namespace ABCWonderworld.World
 
     public sealed class FaceCamera : MonoBehaviour
     {
+        /// <summary>Extra rotation applied after facing the camera (tap reactions such as spin or wobble).</summary>
+        public Quaternion extra = Quaternion.identity;
         private Camera _cam;
         private void LateUpdate()
         {
             if (_cam == null) _cam = Camera.main;
-            if (_cam != null) transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position, Vector3.up);
+            if (_cam != null) transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position, Vector3.up) * extra;
         }
     }
 
@@ -452,6 +479,41 @@ namespace ABCWonderworld.World
             Vector3 q = transform.localPosition + Vector3.up * Time.deltaTime * 0.4f * Mathf.Max(0.4f, Tween.Motion);
             if (q.y > 7f) q.y = 0.3f;
             transform.localPosition = new Vector3(_p.x + Mathf.Sin(Time.time + _p.z) * 0.2f, q.y, _p.z);
+        }
+    }
+
+    /// <summary>Keeps the 16:9 horizontal field of view on narrower aspect ratios (never narrows wider screens).</summary>
+    public sealed class KeepHorizontalFraming : MonoBehaviour
+    {
+        public const float DesignAspect = 16f / 9f;
+        private Camera _cam;
+        private float _baseFov;
+        private float _lastAspect = -1f;
+
+        public void Set(Camera cam, float baseFov)
+        {
+            _cam = cam;
+            _baseFov = baseFov;
+            _lastAspect = -1f;
+            Apply();
+        }
+
+        private void LateUpdate() => Apply();
+
+        private void Apply()
+        {
+            if (_cam == null) return;
+            float a = _cam.aspect;
+            if (Mathf.Approximately(a, _lastAspect) || a <= 0f) return;
+            _lastAspect = a;
+            _cam.fieldOfView = FovFor(_baseFov, a);
+        }
+
+        public static float FovFor(float baseFov, float aspect)
+        {
+            if (aspect >= DesignAspect) return baseFov;
+            float halfH = Mathf.Atan(Mathf.Tan(baseFov * 0.5f * Mathf.Deg2Rad) * DesignAspect);
+            return 2f * Mathf.Atan(Mathf.Tan(halfH) / aspect) * Mathf.Rad2Deg;
         }
     }
 }

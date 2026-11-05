@@ -4,7 +4,7 @@ A 3D preschool alphabet adventure (ages 2–5) for Android, built with **Unity 6
 Five themed worlds, 26 letter characters, and voice-led play: Meet the Letters, Letter Tracing, Find the Letter, Matching, Alphabet Adventures, Free Play and the Alphabet Book, plus a gated Parent Zone.
 Offline, no ads, no accounts, no purchases, no data leaves the device.
 
-> **Status (2026-11-04): all 8 GDD modes playable for A–Z**: Meet, Tracing, Find, Match, Puzzles, 26 Adventures (12 archetypes), Music sing-along + music area, Free Play, Alphabet Book + wardrobe, Parent Zone. All art and voice are placeholders/provisional and phonics are pending expert review; see `Documentation/CONTENT_COMPLETENESS.md`. Test APKs: GitHub Releases. Device checklist: `Documentation/DEVICE_TEST_CHECKLIST.md`.
+> **Status (2026-11-04): all 8 GDD modes playable for A–Z**: Meet, Tracing, Find, Match, Puzzles, 26 Adventures (12 archetypes), Music sing-along + music area, Free Play, Alphabet Book + wardrobe, Parent Zone. All art and voice are placeholders/provisional and phonics are pending expert review; see `Documentation/CONTENT_COMPLETENESS.md`. Test APKs: GitHub Releases. Device checklist: `Documentation/DEVICE_TEST_CHECKLIST.md`. Bug sweep 2026-11-05 (v0.1.1): `Documentation/BUG_SWEEP_2026-11-05.md`.
 
 ## Quick start
 1. Unity Hub → open `UnityProject/` with Unity **6000.3.27f2** (Android Build Support installed).

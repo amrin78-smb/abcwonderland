@@ -11,6 +11,8 @@ namespace ABCWonderworld.UI
         public float width = 24f;
         private readonly List<Vector2> _points = new List<Vector2>();
         public int Count => _points.Count;
+        /// <summary>Bounds the mesh (about 20 vertices per point) so low-end phones never rebuild a huge trail every drag.</summary>
+        public const int MaxPoints = 500;
 
         public void Clear() { _points.Clear(); SetVerticesDirty(); }
 
@@ -18,7 +20,7 @@ namespace ABCWonderworld.UI
         {
             if (_points.Count > 0 && (_points[_points.Count - 1] - p).sqrMagnitude < minSpacing * minSpacing) return;
             _points.Add(p);
-            if (_points.Count > 2000) _points.RemoveAt(0);
+            if (_points.Count > MaxPoints) _points.RemoveAt(0);
             SetVerticesDirty();
         }
 

@@ -56,7 +56,12 @@ namespace ABCWonderworld.Screens
             chGo.transform.localRotation = Quaternion.Euler(0, 18, 0);
             var character = chGo.GetComponent<LetterCharacter>();
             Cosmetics.Apply(character, S);
-            character.Tapped += c => { S.Audio.Speak(letter.introAudioKey, Audio.VoiceMode.Replace); c.SetSpeaking(true); };
+            character.Tapped += c =>
+            {
+                if (Current != null && !Current.IsFinished && Current.OnCharacterTapped()) return;
+                S.Audio.Speak(letter.introAudioKey, Audio.VoiceMode.Replace);
+                c.SetSpeaking(true);
+            };
 
             _ui = UiFactory.Canvas("ActivityCanvas", 10);
             _ctx = new ActivityContext
@@ -69,12 +74,15 @@ namespace ABCWonderworld.Screens
             StartActivity(_nav.Activity);
         }
 
+        private HoldButton _exit;
+        private BigButton _replay;
+
         private void BuildHud()
         {
             UiSkin skin = UiSkin.Load();
-            HoldButton exit = UiFactory.HoldIconButton("Exit", _ui, skin.iconHome, skin.secondary, UiFactory.CornerButton, Exit);
+            HoldButton exit = _exit = UiFactory.HoldIconButton("Exit", _ui, skin.iconHome, skin.secondary, UiFactory.CornerButton, Exit);
             UiFactory.Place((RectTransform)exit.transform, new Vector2(0, 1), new Vector2(110, -110), Vector2.one * UiFactory.CornerButton);
-            BigButton replay = UiFactory.IconButton("Replay", _ui, skin.iconSpeaker, skin.primary, UiFactory.CornerButton, () => Current?.ReplayInstruction());
+            BigButton replay = _replay = UiFactory.IconButton("Replay", _ui, skin.iconSpeaker, skin.primary, UiFactory.CornerButton, () => Current?.ReplayInstruction());
             UiFactory.Place((RectTransform)replay.transform, new Vector2(1, 1), new Vector2(-110, -110), Vector2.one * UiFactory.CornerButton);
         }
 
@@ -96,6 +104,9 @@ namespace ABCWonderworld.Screens
             _ctx.Level = S.Difficulty.LevelFor(Current.Type);
             Current.Finished += OnFinished;
             Current.Begin(_ctx);
+            // Activity play areas are created after the HUD; keep Home/Replay on top so nothing can cover them.
+            if (_exit != null) _exit.transform.SetAsLastSibling();
+            if (_replay != null) _replay.transform.SetAsLastSibling();
             Ready?.Invoke(this);
         }
 

@@ -40,8 +40,8 @@ namespace ABCWonderworld.Activities
 
         private void Glow(int i)
         {
-            foreach (BigButton b in _steps) { var a = b.GetComponent<Attention>(); if (a != null) Destroy(a); }
-            if (i < _steps.Count) _steps[i].gameObject.AddComponent<Attention>().amount = 0.1f;
+            foreach (BigButton b in _steps) { var a = b.GetComponent<Attention>(); if (a != null) a.enabled = false; }
+            if (i < _steps.Count) Attention.Ensure(_steps[i].gameObject, 0.1f);
         }
 
         private void Step(int idx)
@@ -113,9 +113,11 @@ namespace ABCWonderworld.Activities
                 for (int i = 0; i < total; i++)
                 {
                     float t = (i + 0.5f) / total;
-                    Vector2 pos = new Vector2(60, 60) + new Vector2(Mathf.Lerp(-210, 210, t), 10 + Mathf.Sin(t * Mathf.PI) * 70f);
+                    // Spots as big and as far apart as the shell allows; any unpainted spot counts as "the next one".
+                    Vector2 pos = new Vector2(60, 60) + new Vector2(Mathf.Lerp(-250, 250, t), 10 + Mathf.Sin(t * Mathf.PI) * 70f);
                     Image s = UiFactory.Image("Spot_" + i, _area, _skin.circle, i < 2 ? _patternColors[i % 2] : new Color(0.75f, 0.85f, 0.7f), true);
-                    s.rectTransform.sizeDelta = new Vector2(88, 88);
+                    s.rectTransform.sizeDelta = new Vector2(104, 104);
+                    s.raycastPadding = new Vector4(-6, -30, -6, -30);
                     s.rectTransform.anchoredPosition = pos;
                     int idx = i;
                     var b = s.gameObject.AddComponent<BigButton>();
@@ -132,6 +134,8 @@ namespace ABCWonderworld.Activities
                         int ci = c;
                         BigButton pb = UiFactory.IconButton("Paint_" + c, _area, c == 0 ? _skin.star : _skin.circle, _patternColors[c], 170, () => PaintNext(ci));
                         UiFactory.Place((RectTransform)pb.transform, new Vector2(0.5f, 0.5f), new Vector2(-520, 120 - c * 230), new Vector2(170, 170));
+                        Attention.Ensure(pb.gameObject, 0.05f);
+                        _paints.Add(pb);
                     }
                 }
                 GlowSpot();
@@ -151,15 +155,25 @@ namespace ABCWonderworld.Activities
 
         private void GlowSpot()
         {
-            foreach (Image s in _spots) { var a = s.GetComponent<Attention>(); if (a != null) Destroy(a); }
-            if (_nextSpot < _spots.Count) _spots[_nextSpot].gameObject.AddComponent<Attention>().amount = 0.12f;
+            foreach (Image s in _spots) { var a = s.GetComponent<Attention>(); if (a != null) a.enabled = false; }
+            if (_nextSpot < _spots.Count) Attention.Ensure(_spots[_nextSpot].gameObject, 0.12f);
         }
+
+        private readonly List<BigButton> _paints = new List<BigButton>();
 
         private void TapSpot(int i)
         {
-            if (!_ready || i != _nextSpot) return;
-            if (Ctx.Level >= 1 && !S.Settings.SimplifiedInteraction) { Audio.Speak("vo.try_another", ABCWonderworld.Audio.VoiceMode.IfIdle); return; }
-            PaintNext(i % 2);
+            // Painted spots and the examples do nothing; any unpainted spot means "paint the next one".
+            if (!_ready || i < _nextSpot || _nextSpot >= _spots.Count) return;
+            if (_paints.Count == 2)
+            {
+                // Choosing the colour is the child's job here: point at the right paint pot, never "wrong".
+                Audio.PlaySfx("tap");
+                Tween.Pop(this, _paints[_nextSpot % 2].transform, 0.25f, 0.5f);
+                Tween.Pop(this, _spots[_nextSpot].transform, 0.15f, 0.35f);
+                return;
+            }
+            PaintNext(_nextSpot % 2);
         }
 
         private void PaintNext(int colorIndex)
@@ -219,8 +233,8 @@ namespace ABCWonderworld.Activities
 
         private void GlowBar()
         {
-            foreach (Image b in _bars) { var a = b.GetComponent<Attention>(); if (a != null) Destroy(a); }
-            if (_melodyIndex < _melody.Length) _bars[_melody[_melodyIndex]].gameObject.AddComponent<Attention>().amount = 0.07f;
+            foreach (Image b in _bars) { var a = b.GetComponent<Attention>(); if (a != null) a.enabled = false; }
+            if (_melodyIndex < _melody.Length) Attention.Ensure(_bars[_melody[_melodyIndex]].gameObject, 0.07f);
         }
 
         private void PlayBar(int i)

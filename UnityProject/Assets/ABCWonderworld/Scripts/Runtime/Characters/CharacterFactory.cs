@@ -15,6 +15,8 @@ namespace ABCWonderworld.Characters
         public const float BodyRadius = 0.15f;
         public const float BodyDepth = 0.85f;
 
+        private static readonly Dictionary<char, Parts> RuntimeParts = new Dictionary<char, Parts>();
+
         public sealed class Parts
         {
             public Mesh body, sphere, smile;
@@ -23,7 +25,16 @@ namespace ABCWonderworld.Characters
         public static GameObject Build(char upper, Color primary, Color accent, Sprite badge, Func<Color, int, Material> mat, Parts meshes = null)
         {
             mat ??= MaterialLibrary.Get;
-            meshes ??= new Parts();
+            if (meshes == null)
+            {
+                // Runtime fallback (prefab missing): reuse one mesh set per letter instead of leaking a new body,
+                // sphere and smile mesh on every scene load.
+                if (Application.isPlaying)
+                {
+                    if (!RuntimeParts.TryGetValue(upper, out meshes)) RuntimeParts[upper] = meshes = new Parts();
+                }
+                else meshes = new Parts();
+            }
             List<Vector2[]> strokes = LetterStrokeLibrary.Get(upper);
             Rect b = LetterStrokeLibrary.Bounds(strokes);
             Vector3 centerOffset = new Vector3(-b.center.x, 0, 0);
@@ -92,11 +103,15 @@ namespace ABCWonderworld.Characters
             col.center = new Vector3(0, b.center.y, 0);
             col.size = new Vector3(Mathf.Max(0.6f, b.width + 0.45f), b.height + 0.4f, 0.6f);
 
+            // Inactive while wiring up, so the animator's Awake sees its fields (AddComponent runs Awake at once).
+            bool wasActive = root.activeSelf;
+            root.SetActive(false);
             var anim = root.AddComponent<ProceduralCharacterAnimator>();
             anim.body = body.transform;
             anim.eyes = eyes.ToArray();
             anim.pupils = pupils.ToArray();
             anim.mouth = mouth;
+            root.SetActive(wasActive);
             return root;
         }
 
@@ -170,16 +185,5 @@ namespace ABCWonderworld.Characters
             }
             return new List<Vector2> { new Vector2(minX + 0.02f, b.yMin), new Vector2(maxX - 0.02f, b.yMin) };
         }
-    }
-
-    /// <summary>Small floating bob for badges and collectibles.</summary>
-    public sealed class Bob : MonoBehaviour
-    {
-        public float height = 0.06f;
-        public float speed = 2f;
-        private Vector3 _p;
-        private float _o;
-        private void OnEnable() { _p = transform.localPosition; _o = UnityEngine.Random.value * 6f; }
-        private void Update() => transform.localPosition = _p + Vector3.up * Mathf.Sin(Time.time * speed + _o) * height * UI.Tween.Motion;
     }
 }

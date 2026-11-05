@@ -71,7 +71,12 @@ namespace ABCWonderworld.Persistence
                 report = new SaveLoadReport(SaveLoadOutcome.FutureVersionPreserved, failure);
                 return SaveData.CreateNew(_clock());
             }
-            if (File.Exists(MainPath)) Preserve(MainPath, "corrupt");
+            if (File.Exists(MainPath))
+            {
+                // Keep a copy for diagnosis, then remove the corrupt main so the next Save() does not rotate it
+                // over the good backup we are about to recover from.
+                if (Preserve(MainPath, "corrupt")) { try { File.Delete(MainPath); } catch { /* best effort */ } }
+            }
             // A crash between deleting save.json and moving the temp file leaves a complete temp file.
             if (TryRead(TempPath, out data, out _, ref failure))
             {
@@ -147,17 +152,19 @@ namespace ABCWonderworld.Persistence
             }
         }
 
-        private void Preserve(string path, string tag)
+        private bool Preserve(string path, string tag)
         {
             try
             {
                 string dest = Path.Combine(_dir, $"save.{tag}-{_clock():yyyyMMdd-HHmmss}.json");
                 if (!File.Exists(dest)) File.Copy(path, dest);
                 Debug.LogWarning($"[Save] Preserved unreadable save as {Path.GetFileName(dest)}");
+                return true;
             }
             catch (Exception e)
             {
                 Debug.LogWarning("[Save] Could not preserve file: " + e.Message);
+                return false;
             }
         }
     }

@@ -40,4 +40,4 @@ Status: ✅ implemented and verified by the listed test/run · 🟡 partial or p
 | MP 7 | ScriptableObject data model, stable IDs, validation | `Content/*` | EM | ✅ |
 | MP 16 | Versioned save, atomic, recovery, migrations | `Persistence/*` (D-004) | EM SaveRepositoryTests | ✅ |
 | MP 17 | Android IL2CPP/ARM64, quality presets, profiling | ProjectSetup (D-018), `QualityService` Auto/Low/Med/High (D-019) | build | 🟡 device profiling pending |
-| MP 18 | Unit/EditMode/PlayMode tests | `Tests/` | 252 EM + 29 PM | ✅ |
+| MP 18 | Unit/EditMode/PlayMode tests | `Tests/` | 259 EM + 29 PM | ✅ |

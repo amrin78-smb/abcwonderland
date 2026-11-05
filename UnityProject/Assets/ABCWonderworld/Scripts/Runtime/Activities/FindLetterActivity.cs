@@ -148,7 +148,7 @@ namespace ABCWonderworld.Activities
             {
                 _assist = Assistance.Hint;
                 BigButton t = TargetButton();
-                if (t != null) t.gameObject.AddComponent<Attention>().amount = 0.12f;
+                if (t != null) Attention.Ensure(t.gameObject, 0.12f);
             }
             if (_wrong == 3) RemoveADistractor();
             if (_wrong >= 4)
@@ -159,7 +159,7 @@ namespace ABCWonderworld.Activities
                 {
                     _hand.gameObject.SetActive(true);
                     _hand.transform.position = t.transform.position + new Vector3(30, -40, 0);
-                    _hand.gameObject.AddComponent<Attention>();
+                    Attention.Ensure(_hand.gameObject, 0.08f);
                 }
             }
         }

@@ -47,6 +47,7 @@ namespace ABCWonderworld.Input
         /// </summary>
         private void Update()
         {
+            PointerGate.ReleaseIfIdle();
             var kb = UnityEngine.InputSystem.Keyboard.current;
             if (kb == null || !kb.escapeKey.wasPressedThisFrame) return;
             Core.GameServices s = Core.GameServices.Current;

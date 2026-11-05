@@ -8,7 +8,7 @@ if [ "${SKIP_BUILD:-0}" != 1 ]; then
   grep "\[Build\]" Logs/linux_build.log | head -5
 fi
 rm -rf Logs/AutoPilot
-timeout 900 xvfb-run -a -s "-screen 0 1920x1080x24" Builds/Linux/ABCWonderworld.x86_64 -force-glcore -screen-fullscreen 0 \
+timeout 1500 xvfb-run -a -s "-screen 0 1920x1080x24" Builds/Linux/ABCWonderworld.x86_64 -force-glcore -screen-fullscreen 0 \
   -screen-width "${W:-1600}" -screen-height "${H:-900}" -abcw-autopilot -abcw-shots "$PWD/Logs/AutoPilot" -logFile "$PWD/Logs/autopilot.log"
 CODE=$?
 echo "[autopilot] exit=$CODE"

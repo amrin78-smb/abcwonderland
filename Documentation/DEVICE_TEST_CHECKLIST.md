@@ -30,3 +30,5 @@ Note for each phone: model, Android version, does it launch, rough smoothness (a
 
 ## Toddler stress
 - [ ] Mash buttons quickly, palm on screen, tap during loading screens — no double navigation, no stuck screens
+- [ ] Two fingers at once (v0.1.1+): rest a palm while tracing / dragging a puzzle or match piece — only the first finger acts; the hold-Home button still works
+- [ ] Leave the ABC song playing without touching: screen does not dim during the song

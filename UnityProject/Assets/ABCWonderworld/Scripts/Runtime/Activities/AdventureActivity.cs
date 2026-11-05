@@ -36,6 +36,8 @@ namespace ABCWonderworld.Activities
         private RectTransform _fillBar;
         private bool _ready;
         private UiSkin _skin;
+        private int _popWrong; // distractor balloons tapped since the last target pop (honest recognition evidence)
+        private BigButton _pourButton;
 
         protected override void OnBegin()
         {
@@ -159,6 +161,7 @@ namespace ABCWonderworld.Activities
                 GlyphGraphic g = b.GetComponentInChildren<GlyphGraphic>();
                 LetterDefinition l = g != null ? S.Catalog.Letter(char.ToUpperInvariant(g.Glyph)) : null;
                 if (l != null) Audio.Speak(l.nameAudioKey);
+                _popWrong++;
                 return;
             }
             b.Interactable = false;
@@ -166,7 +169,11 @@ namespace ABCWonderworld.Activities
             Audio.PlaySfx("sparkle", 0.5f);
             Transform t = b.transform;
             Tween.Run(this, 0.25f, k => { if (t != null) t.localScale = Vector3.one * (1 + k * 0.5f); }, () => { if (t != null) Destroy(t.gameObject); });
-            Progress.RecordRecognition(Letter.id, Type, char.IsUpper(b.GetComponentInChildren<GlyphGraphic>().Glyph) ? LetterCase.Upper : LetterCase.Lower, true, 1, Learning.Assistance.None);
+            GlyphGraphic popped = b.GetComponentInChildren<GlyphGraphic>();
+            LetterCase popCase = popped != null && char.IsLower(popped.Glyph) ? LetterCase.Lower : LetterCase.Upper;
+            // Attempts include the distractors tapped first, so tapping everything is not counted as recognition.
+            Progress.RecordRecognition(Letter.id, Type, popCase, true, _popWrong + 1, Learning.Assistance.None);
+            _popWrong = 0;
             Progressed();
         }
 
@@ -237,6 +244,7 @@ namespace ABCWonderworld.Activities
             _fillBar = water.rectTransform;
             BigButton drop = Item("WaterDrop", UiSkin.Picture("water"), new Vector2(-260, 140), 260, Color.white, Pour);
             drop.gameObject.AddComponent<Attention>();
+            _pourButton = drop; // tapping the character (Ellie's trunk, per the spoken instruction) pours too
             _ready = true;
         }
 
@@ -279,6 +287,13 @@ namespace ABCWonderworld.Activities
         public override void ReplayInstruction()
         {
             if (_def != null) Say(_def.instructionAudioKey);
+        }
+
+        public override bool OnCharacterTapped()
+        {
+            if (_pourButton == null || !_ready || IsPaused || _done >= _goal || !_pourButton.Interactable) return false;
+            Pour(_pourButton);
+            return true;
         }
 
         public override IEnumerator AutoPlay()

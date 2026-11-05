@@ -40,6 +40,7 @@ namespace ABCWonderworld.Screens
         {
             _grid = UiFactory.Rect("Grid", _ui);
             UiFactory.Place(_grid, new Vector2(0.5f, 0.47f), Vector2.zero, new Vector2(1700, 860));
+            ScaleToFit.Add(_grid, new Vector2(1700, 860), new Vector2(40, 0));
             for (int i = 0; i < S.Catalog.letters.Count; i++)
             {
                 LetterDefinition l = S.Catalog.letters[i];
@@ -79,6 +80,7 @@ namespace ABCWonderworld.Screens
             UiFactory.Stretch(dim.rectTransform);
             Image card = UiFactory.Image("Card", _page, skin.rounded, Color.white, true);
             UiFactory.Place(card.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(1600, 900));
+            ScaleToFit.Add(card.rectTransform, new Vector2(1600, 900), new Vector2(40, 30));
             S.Progress.RecordExposure(l.id, ActivityType.MeetLetter);
 
             if (ch?.portrait != null)

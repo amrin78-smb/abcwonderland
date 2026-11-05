@@ -32,7 +32,12 @@ namespace ABCWonderworld.Activities
         private bool _inputEnabled;
         private float _lastHint = -10f;
         private float _idle;
-        private bool _assisted;
+        private bool _assisted;      // this form: a demo was shown because the child asked or got stuck
+        private bool _anyAssisted;   // whole session (for adaptive difficulty)
+        private int _struggle;       // whole session: forms with repeated wrong starts / leaving the path
+        private bool _demoRequested; // the running demo was asked for (idle help / Replay), not the routine Guided one
+        private int _pointer = NoPointer;
+        private const int NoPointer = int.MinValue;
         private Coroutine _demo;
         private readonly List<LetterCase> _forms = new List<LetterCase>();
         private int _formIndex;
@@ -113,16 +118,20 @@ namespace ABCWonderworld.Activities
             _done.SetProgress(0, 0);
             _trail.Clear();
             _assisted = false;
+            _pointer = NoPointer;
+            StopDemo();
             UpdateMarkers();
             _inputEnabled = true;
             Say(index == 0 ? "vo.trace_intro" : "vo.trace_now_small");
-            if (_mode == TraceMode.Guided) _demo = StartCoroutine(Demo(1.2f));
+            // The routine Guided demo is part of the mode, so it does not count as assistance.
+            if (_mode == TraceMode.Guided) StartDemo(1.2f, requested: false);
         }
 
         // ------------------------------------------------------------------ input
         public void OnPointerDown(PointerEventData e)
         {
             if (!_inputEnabled || IsPaused || _eval.IsComplete) return;
+            if (_pointer != NoPointer || !ABCWonderworld.Input.PointerGate.TryClaim(e)) return; // one finger traces
             StopDemo();
             _idle = 0;
             Vector2 g = ToGlyph(e);
@@ -133,20 +142,27 @@ namespace ABCWonderworld.Activities
                 Tween.Pop(this, _startDot.transform, 0.3f, 0.5f);
                 return;
             }
+            _pointer = e.pointerId;
+            _trail.Clear(); // each touch is its own line; never join separate touches
             _trail.Add(ToLocal(e));
             Handle(f);
         }
 
         public void OnDrag(PointerEventData e)
         {
+            if (e.pointerId != _pointer) return;
             if (!_inputEnabled || IsPaused || _eval.IsComplete) return;
             _idle = 0;
-            _trail.Add(ToLocal(e));
-            Handle(_eval.Move(ToGlyph(e)));
+            TraceFeedback f = _eval.Move(ToGlyph(e));
+            if (f != TraceFeedback.None) _trail.Add(ToLocal(e)); // only draw where tracing is actually happening
+            Handle(f);
         }
 
         public void OnPointerUp(PointerEventData e)
         {
+            ABCWonderworld.Input.PointerGate.Release(e);
+            if (e.pointerId != _pointer) return;
+            _pointer = NoPointer;
             if (!_inputEnabled || _eval.IsComplete) return;
             Handle(_eval.End());
         }
@@ -182,9 +198,13 @@ namespace ABCWonderworld.Activities
         private IEnumerator FormComplete()
         {
             _inputEnabled = false;
+            _pointer = NoPointer;
+            StopDemo();
             _done.ShowAll();
             _trail.Clear();
             UpdateMarkers();
+            _anyAssisted |= _assisted;
+            if (_eval.RejectedStarts >= 3 || _eval.OffPathEvents >= 3) _struggle++;
             Progress.RecordTracing(Letter.id, _case, true, _assisted ? Assistance.Demonstrated : Assistance.None);
             Audio.PlaySfx("success");
             Character(CharacterState.Celebrate);
@@ -195,7 +215,7 @@ namespace ABCWonderworld.Activities
             if (_formIndex + 1 < _forms.Count) StartForm(_formIndex + 1);
             else
             {
-                S.Difficulty.RecordRound(Type, 0, _assisted ? Assistance.Demonstrated : Assistance.None);
+                S.Difficulty.RecordRound(Type, _struggle, _anyAssisted ? Assistance.Demonstrated : Assistance.None);
                 Finish(1);
             }
         }
@@ -225,8 +245,9 @@ namespace ABCWonderworld.Activities
         private IEnumerator Demo(float delay)
         {
             yield return new WaitForSeconds(delay);
-            if (_eval == null || _eval.IsComplete) yield break;
+            if (_eval == null || _eval.IsComplete) { _demo = null; yield break; }
             _hand.gameObject.SetActive(true);
+            if (_demoRequested) _assisted = true;
             IReadOnlyList<Vector2> s = _eval.StrokeSamples(_eval.CurrentStroke);
             float dur = Mathf.Clamp(s.Count * 0.025f, 0.8f, 2.2f);
             for (float t = 0; t < dur; t += Time.deltaTime)
@@ -238,6 +259,13 @@ namespace ABCWonderworld.Activities
             yield return new WaitForSeconds(0.3f);
             _hand.gameObject.SetActive(false);
             _demo = null;
+        }
+
+        private void StartDemo(float delay, bool requested)
+        {
+            StopDemo();
+            _demoRequested = requested;
+            _demo = StartCoroutine(Demo(delay));
         }
 
         private void StopDemo()
@@ -255,7 +283,7 @@ namespace ABCWonderworld.Activities
             if (_idle > 6f && _demo == null)
             {
                 _idle = 0;
-                if (_mode != TraceMode.Free) _demo = StartCoroutine(Demo(0f));
+                if (_mode != TraceMode.Free) StartDemo(0f, requested: true);
                 Hint("vo.trace_start_here");
             }
         }
@@ -271,7 +299,7 @@ namespace ABCWonderworld.Activities
         public override void ReplayInstruction()
         {
             Say(_formIndex == 0 ? "vo.trace_intro" : "vo.trace_now_small");
-            if (_mode != TraceMode.Free && _demo == null) _demo = StartCoroutine(Demo(0.2f));
+            if (_mode != TraceMode.Free && _demo == null && _inputEnabled) StartDemo(0.2f, requested: true);
         }
 
         public override void Abort()

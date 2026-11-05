@@ -87,10 +87,10 @@ namespace ABCWonderworld.EditorTools
         {
             PlayerSettings.companyName = "Nocvault";
             PlayerSettings.productName = ProductName;
-            PlayerSettings.bundleVersion = "0.1.0";
+            PlayerSettings.bundleVersion = "0.1.1";
             PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, BundleId);
             PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone, BundleId);
-            PlayerSettings.Android.bundleVersionCode = Math.Max(1, PlayerSettings.Android.bundleVersionCode);
+            PlayerSettings.Android.bundleVersionCode = Math.Max(2, PlayerSettings.Android.bundleVersionCode); // 0.1.1 = 2 (installs over 0.1.0)
 
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
             PlayerSettings.allowedAutorotateToLandscapeLeft = true;

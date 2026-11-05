@@ -21,6 +21,10 @@ namespace ABCWonderworld.Core
 
         public static string SaveDirectoryOverride; // PlayMode tests point this at a temp folder
 
+        /// <summary>Set while <see cref="GameServices.EnsureBooted"/> creates a bootstrapper, so its Awake does not
+        /// navigate to Home (a scene opened on its own must stay where it is).</summary>
+        internal static bool SuppressStartFlow;
+
         private void Awake()
         {
             if (GameServices.Current != null && !_initialized)
@@ -28,7 +32,7 @@ namespace ABCWonderworld.Core
                 Destroy(gameObject);
                 return;
             }
-            Initialize(openHomeOnStart);
+            Initialize(openHomeOnStart && !SuppressStartFlow);
         }
 
         internal void Initialize(bool startFlow)
@@ -36,8 +40,12 @@ namespace ABCWonderworld.Core
             if (_initialized) return;
             _initialized = true;
             DontDestroyOnLoad(gameObject);
-            Screen.sleepTimeout = SleepTimeout.SystemSetting;
-            UnityEngine.Input.multiTouchEnabled = false; // one finger at a time: palms and second hands are ignored
+            // Keep the screen on while the child plays: the ABC song, voice-led intros and celebrations run with no
+            // touches, and a toddler cannot unlock a phone that dimmed mid-song. Update() hands control back to
+            // the system after a long idle spell so a forgotten phone still sleeps.
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            // One finger at a time is enforced by Input.PointerGate (the legacy multiTouchEnabled flag does not
+            // affect the Input System UI module).
 
             ContentCatalog catalog = ContentCatalog.Load();
             if (catalog == null) Debug.LogError("[Boot] ContentCatalog missing from Resources. Run ABC Wonderworld > Setup Project.");
@@ -88,27 +96,67 @@ namespace ABCWonderworld.Core
             _dirty = true;
         }
 
+        private float _retryDelay = FirstRetryDelay;
+        private const float FirstRetryDelay = 10f;
+
         public void SaveNow()
         {
             GameServices s = GameServices.Current;
             if (s == null) return;
-            s.Save.totalPlaySeconds = (long)s.Session.ActiveSeconds + _baseSeconds;
-            if (s.Repository.Save(s.Save)) _dirty = false;
+            AccumulatePlayTime(s);
+            if (s.Repository.Save(s.Save))
+            {
+                _dirty = false;
+                _retryDelay = FirstRetryDelay;
+            }
+            else
+            {
+                // Storage full / unavailable: back off instead of retrying (and fsyncing) every frame.
+                _dirty = true;
+                _saveTimer = _retryDelay;
+                _retryDelay = Mathf.Min(_retryDelay * 2f, 120f);
+            }
         }
 
-        private long _baseSeconds = -1;
+        /// <summary>
+        /// Moves whole seconds of session play into the saved lifetime total. The save is the source of truth,
+        /// so a parent's progress reset (which zeroes it) sticks, and snoozing the break reminder loses nothing.
+        /// </summary>
+        private double _countedSeconds;
+        private void AccumulatePlayTime(GameServices s)
+        {
+            double pending = s.Session.TotalSeconds - _countedSeconds;
+            if (pending < 1.0) return;
+            long whole = (long)pending;
+            s.Save.totalPlaySeconds = System.Math.Max(0, s.Save.totalPlaySeconds) + whole;
+            _countedSeconds += whole;
+        }
+
+        private float _idleSeconds;
+        private const float SleepAfterIdleSeconds = 300f;
 
         private void Update()
         {
             GameServices s = GameServices.Current;
             if (s == null) return;
-            if (_baseSeconds < 0) _baseSeconds = s.Save.totalPlaySeconds;
             s.Session.Tick(Time.unscaledDeltaTime, s.Flow.IsTransitioning);
+            AccumulatePlayTime(s);
+            UpdateSleep(s);
             if (_dirty)
             {
                 _saveTimer -= Time.unscaledDeltaTime;
                 if (_saveTimer <= 0) SaveNow();
             }
+        }
+
+        /// <summary>NeverSleep while in use; after 5 idle minutes with nothing being said, let the OS sleep again.</summary>
+        private void UpdateSleep(GameServices s)
+        {
+            bool touched = Input.PointerGate.IsHeld || UnityEngine.InputSystem.Pointer.current != null && UnityEngine.InputSystem.Pointer.current.press.isPressed;
+            bool speaking = s.Audio != null && s.Audio.IsSpeaking;
+            _idleSeconds = touched || speaking ? 0f : _idleSeconds + Time.unscaledDeltaTime;
+            int wanted = _idleSeconds > SleepAfterIdleSeconds ? SleepTimeout.SystemSetting : SleepTimeout.NeverSleep;
+            if (Screen.sleepTimeout != wanted) Screen.sleepTimeout = wanted;
         }
 
         private void OnApplicationPause(bool paused)

@@ -45,8 +45,12 @@ namespace ABCWonderworld.Activities
             _area = UiFactory.Rect("MatchArea", Ctx.UiRoot);
             UiFactory.Place(_area, new Vector2(0.62f, 0.47f), Vector2.zero, new Vector2(1150, 860));
             Progress.RecordExposure(Letter.id, Type);
-            StartRound(0);
+            // Picture round only for letters with a true beginner-sound word (X has none: "fox" ends in x).
+            StartRound(HasBeginnerWord(Letter) ? 0 : 1);
         }
+
+        private static bool HasBeginnerWord(LetterDefinition l) =>
+            l != null && l.vocabulary != null && l.vocabulary.Any(v => v != null && v.startsWithBeginnerSound && v.picture != null);
 
         private void StartRound(int round)
         {
@@ -62,8 +66,10 @@ namespace ABCWonderworld.Activities
             if (S.Settings.SimplifiedInteraction) pairs = 2;
 
             // Letters: the focus letter plus visually distinct neighbours from the same world (or the alphabet).
-            var pool = (Ctx.World != null ? S.Catalog.LettersIn(Ctx.World) : S.Catalog.letters).Where(l => l != Letter && !ChoiceGenerator.AreConfusable(l.upper, Letter.upper)).ToList();
-            if (pool.Count < pairs - 1) pool = S.Catalog.letters.Where(l => l != Letter).ToList();
+            bool pictures = _mode == Mode.PictureToLetter;
+            var pool = (Ctx.World != null ? S.Catalog.LettersIn(Ctx.World) : S.Catalog.letters)
+                .Where(l => l != Letter && !ChoiceGenerator.AreConfusable(l.upper, Letter.upper) && (!pictures || HasBeginnerWord(l))).ToList();
+            if (pool.Count < pairs - 1) pool = S.Catalog.letters.Where(l => l != Letter && (!pictures || HasBeginnerWord(l))).ToList();
             var letters = new List<LetterDefinition> { Letter };
             letters.AddRange(pool.OrderBy(_ => Ctx.Rng.Next()).Take(pairs - 1));
             Progress.RecordPractice(Letter.id, Type, _mode == Mode.UpperToLower ? LetterCase.Lower : (LetterCase?)null);
@@ -91,7 +97,8 @@ namespace ABCWonderworld.Activities
             UiFactory.Shadow(card.transform, size);
             if (_mode == Mode.PictureToLetter)
             {
-                VocabularyEntry v = l.vocabulary.FirstOrDefault(x => x != null && x.startsWithBeginnerSound) ?? l.vocabulary.FirstOrDefault(x => x != null);
+                // Never fall back to a non-beginner word: the picture is presented as starting with this letter.
+                VocabularyEntry v = l.vocabulary.FirstOrDefault(x => x != null && x.startsWithBeginnerSound && x.picture != null);
                 Image pic = UiFactory.Image("Picture", card.transform, v?.picture, Color.white);
                 UiFactory.Stretch(pic.rectTransform, 26);
                 var piece = new Piece { rt = card.rectTransform, key = l.id, home = pos, letter = l };
@@ -165,6 +172,8 @@ namespace ABCWonderworld.Activities
 
         private void DropSource(Piece p, Vector2 screenPos)
         {
+            if (p.matched) return; // already matched (e.g. by a tap while this drag was in flight)
+            if (_busy) { ReturnHome(p); return; }
             Piece best = null;
             float bestD = float.MaxValue;
             foreach (Piece t in _targets)
@@ -267,14 +276,21 @@ namespace ABCWonderworld.Activities
         public System.Func<bool> onBegin;
         public System.Action<Vector2> onDrop;
         private bool _dragging;
+        private int _pointer;
         private Vector2 _grabOffset;
 
-        public void OnPointerClick(PointerEventData e) { if (!e.dragging) onTap?.Invoke(); }
+        public void OnPointerClick(PointerEventData e)
+        {
+            if (e.dragging || !ABCWonderworld.Input.PointerGate.Allows(e)) return;
+            onTap?.Invoke();
+        }
 
         public void OnBeginDrag(PointerEventData e)
         {
+            if (_dragging || !ABCWonderworld.Input.PointerGate.TryClaim(e)) return; // one piece, one finger
             _dragging = onBegin == null || onBegin();
-            if (!_dragging) return;
+            if (!_dragging) { ABCWonderworld.Input.PointerGate.Release(e); return; }
+            _pointer = e.pointerId;
             var rt = (RectTransform)transform;
             RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)rt.parent, e.position, e.pressEventCamera, out Vector2 local);
             _grabOffset = rt.anchoredPosition - local;
@@ -282,7 +298,7 @@ namespace ABCWonderworld.Activities
 
         public void OnDrag(PointerEventData e)
         {
-            if (!_dragging) return;
+            if (!_dragging || e.pointerId != _pointer) return;
             var rt = (RectTransform)transform;
             RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)rt.parent, e.position, e.pressEventCamera, out Vector2 local);
             rt.anchoredPosition = local + _grabOffset;
@@ -290,8 +306,9 @@ namespace ABCWonderworld.Activities
 
         public void OnEndDrag(PointerEventData e)
         {
-            if (!_dragging) return;
+            if (!_dragging || e.pointerId != _pointer) return;
             _dragging = false;
+            ABCWonderworld.Input.PointerGate.Release(e);
             onDrop?.Invoke(e.position);
         }
     }

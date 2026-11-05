@@ -52,6 +52,7 @@ namespace ABCWonderworld.Screens
             UiFactory.Stretch(dim.rectTransform);
             UnityEngine.UI.Image card = UiFactory.Image("Card", root, skin.rounded, Color.white, true);
             UiFactory.Place(card.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(1500, 760));
+            ScaleToFit.Add(card.rectTransform, new Vector2(1500, 760), new Vector2(40, 30));
             var items = s.Catalog.rewards.Where(r => r != null && r.type != RewardType.Sticker).ToList();
             for (int i = 0; i < items.Count; i++)
             {

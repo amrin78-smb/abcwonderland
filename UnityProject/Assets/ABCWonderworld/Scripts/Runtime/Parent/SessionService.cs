@@ -8,17 +8,21 @@ namespace ABCWonderworld.Parent
     /// </summary>
     public sealed class SessionService
     {
-        private double _activeSeconds;
+        private double _activeSeconds; // since launch or the last snooze (drives the break reminder only)
+        private double _totalSeconds;  // since launch; never reset by Snooze (drives lifetime play time)
         private bool _suggested;
 
         public int ReminderMinutes { get; set; }
         public double ActiveSeconds => _activeSeconds;
+        public double TotalSeconds => _totalSeconds;
         public event Action BreakSuggested;
 
         public void Tick(double deltaSeconds, bool paused)
         {
             if (paused || deltaSeconds <= 0) return;
-            _activeSeconds += Math.Min(deltaSeconds, 1.0); // clamp long frames (app was suspended)
+            double d = Math.Min(deltaSeconds, 1.0); // clamp long frames (app was suspended)
+            _activeSeconds += d;
+            _totalSeconds += d;
         }
 
         public bool ShouldSuggestBreak => ReminderMinutes > 0 && !_suggested && _activeSeconds >= ReminderMinutes * 60.0;
@@ -32,7 +36,8 @@ namespace ABCWonderworld.Parent
             return true;
         }
 
-        /// <summary>Restarts the reminder timer (e.g. after a parent dismisses it with "a little longer").</summary>
+        /// <summary>Restarts the reminder timer (e.g. after a parent dismisses it with "a little longer").
+        /// Lifetime play time (<see cref="TotalSeconds"/>) is unaffected.</summary>
         public void Snooze()
         {
             _activeSeconds = 0;

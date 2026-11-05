@@ -70,11 +70,14 @@ namespace ABCWonderworld.Learning
 
         public LetterLearningState StateOf(string letterId) => ProgressRules.StateOf(Get(letterId));
 
-        public void RecordExposure(string letterId, ActivityType type)
+        /// <param name="logEvent">False for high-frequency exposure (each letter of the sing-along) so it
+        /// does not push real activity out of the capped recent-events list.</param>
+        public void RecordExposure(string letterId, ActivityType type, bool logEvent = true)
         {
             LetterProgressData p = GetOrCreate(letterId);
             p.exposures++;
-            Add(letterId, type, -1, EvidenceKind.Exposure, EventOutcome.None, 0, Assistance.None, null);
+            if (logEvent) Add(letterId, type, -1, EvidenceKind.Exposure, EventOutcome.None, 0, Assistance.None, null);
+            else Changed?.Invoke();
         }
 
         public void RecordPractice(string letterId, ActivityType type, LetterCase? letterCase)
@@ -102,7 +105,9 @@ namespace ABCWonderworld.Learning
             {
                 p.recognitionCorrectAssisted++;
             }
-            if (!correct || attempts > 1) p.recognitionIncorrect += Math.Max(1, attempts - 1);
+            // A correct outcome's last attempt was the right one; an unfinished round's attempts were all wrong.
+            if (!correct) p.recognitionIncorrect += Math.Max(1, attempts);
+            else if (attempts > 1) p.recognitionIncorrect += attempts - 1;
             Add(letterId, type, (int)letterCase, EvidenceKind.Recognition, correct ? EventOutcome.Correct : EventOutcome.Incorrect, attempts, assistance, null);
         }
 

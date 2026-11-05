@@ -13,7 +13,9 @@ namespace ABCWonderworld.Screens
         {
             S = GameServices.EnsureBooted();
             TouchInteractionService.EnsureEventSystem();
-            if (S.Settings.MusicEnabled) S.Audio.PlayMusic(Audio.AudioService.LoadMusic("home_loop"));
+            // Always start the bed; "Music off" mutes it via volume, so switching music back on in the Parent Zone
+            // is heard immediately instead of only after the next scene load.
+            S.Audio.PlayMusic(Audio.AudioService.LoadMusic("home_loop"));
             Build();
         }
 

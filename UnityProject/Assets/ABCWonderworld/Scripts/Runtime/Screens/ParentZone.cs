@@ -132,6 +132,7 @@ namespace ABCWonderworld.Screens
             _overlay = Overlay("ParentZone");
             Image card = UiFactory.Image("Card", _overlay, _skin.rounded, Panel, true);
             UiFactory.Place(card.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(1780, 1000));
+            ScaleToFit.Add(card.rectTransform, new Vector2(1780, 1000), new Vector2(40, 30));
             Text title = UiFactory.Label("Title", card.transform, "Parent Zone", 60, Ink, TextAnchor.MiddleLeft);
             UiFactory.Place(title.rectTransform, new Vector2(0, 1), new Vector2(330, -70), new Vector2(500, 80));
             string[] tabs = { "Progress", "Settings", "Reset" };
@@ -169,7 +170,7 @@ namespace ABCWonderworld.Screens
             int upper = all.Sum(l => l.upperActivities), lower = all.Sum(l => l.lowerActivities);
             int traceA = all.Sum(l => l.tracingAttempts), traceC = all.Sum(l => l.tracingCompletionsUpper + l.tracingCompletionsLower);
             int vocab = all.Sum(l => l.vocabularyHeard.Count);
-            long minutes = Math.Max(_s.Save.totalPlaySeconds, (long)_s.Session.ActiveSeconds) / 60;
+            long minutes = Math.Max(0, _s.Save.totalPlaySeconds) / 60;
             string fav = string.Join(", ", p.FavouriteModes().Select(ModeName));
 
             string summary =

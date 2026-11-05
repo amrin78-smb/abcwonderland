@@ -22,6 +22,7 @@ namespace ABCWonderworld.Screens
         private readonly List<AudioSource> _singers = new List<AudioSource>();
         private double _startDsp = -1;
         private double _pausedAt = -1;
+        private bool _paused;
         private int _lastNote = -2;
         private BigButton _playPause;
         private Image _playIcon;
@@ -32,6 +33,7 @@ namespace ABCWonderworld.Screens
         protected override void Build()
         {
             S.Audio.PlayMusic(null); // the song replaces the background music here
+            S.Progress.RecordActivityStarted(ActivityType.Music);
             WorldDefinition w = S.Catalog.worlds.Count > 2 ? S.Catalog.worlds[2] : null;
             EnvironmentBuilder.SetupCameraAndLight(w, new Vector3(0, 2.8f, -10f), new Vector3(0, 1.6f, 2f), 40f);
             EnvironmentBuilder.Build(w, false, 77);
@@ -55,14 +57,17 @@ namespace ABCWonderworld.Screens
             UiFactory.Place((RectTransform)home.transform, new Vector2(0, 1), new Vector2(110, -110), Vector2.one * UiFactory.CornerButton);
 
             // Letter strip: 2 rows of 13.
+            // Centred between the Home button (left) and Play/Replay (right); shrinks on narrow screens so the
+            // buttons never cover M and Z.
             Image strip = UiFactory.Image("Strip", ui, skin.rounded, new Color(1, 1, 1, 0.88f));
-            UiFactory.Place(strip.rectTransform, new Vector2(0.5f, 1), new Vector2(60, -190), new Vector2(1480, 290));
+            UiFactory.Place(strip.rectTransform, new Vector2(0.5f, 1), new Vector2(0, -190), new Vector2(1390, 290));
+            ScaleToFit.Add(strip.rectTransform, new Vector2(1390, 290), new Vector2(2 * 270, 0));
             for (int i = 0; i < 26; i++)
             {
                 LetterDefinition l = S.Catalog.letters[i];
                 Color col = S.Catalog.CharacterFor(l)?.primaryColor ?? skin.primary;
                 GlyphGraphic g = UiFactory.Glyph("L_" + l.upper, strip.transform, l.upper, UiFactory.Lighten(col, 0.55f), 0.2f);
-                UiFactory.Place(g.rectTransform, new Vector2(0.5f, 0.5f), new Vector2((i % 13 - 6) * 108, i < 13 ? 65 : -65), new Vector2(95, 115));
+                UiFactory.Place(g.rectTransform, new Vector2(0.5f, 0.5f), new Vector2((i % 13 - 6) * 102, i < 13 ? 65 : -65), new Vector2(92, 115));
                 _letters.Add(g);
             }
 
@@ -109,7 +114,7 @@ namespace ABCWonderworld.Screens
         public void TogglePlay()
         {
             if (IsPlaying) Pause();
-            else if (_pausedAt >= 0) Resume();
+            else if (_paused) Resume();
             else Restart();
         }
 
@@ -122,6 +127,7 @@ namespace ABCWonderworld.Screens
             HighlightedLetters = 0;
             _lastNote = -2;
             _pausedAt = -1;
+            _paused = false;
             ApplyVolumes();
             _startDsp = AudioSettings.dspTime + 0.15;
             _accompaniment.PlayScheduled(_startDsp);
@@ -131,7 +137,9 @@ namespace ABCWonderworld.Screens
 
         private void Pause()
         {
-            _pausedAt = AudioSettings.dspTime - _startDsp;
+            // A pause during the short pre-roll (before the song has started) resumes from the beginning.
+            _pausedAt = System.Math.Max(0, AudioSettings.dspTime - _startDsp);
+            _paused = true;
             _accompaniment.Pause();
             foreach (AudioSource a in _singers) a.Stop();
             SetIcon(false);
@@ -145,6 +153,7 @@ namespace ABCWonderworld.Screens
             _accompaniment.PlayScheduled(AudioSettings.dspTime + 0.1);
             ScheduleLetters(_pausedAt);
             _pausedAt = -1;
+            _paused = false;
             SetIcon(true);
         }
 
@@ -163,7 +172,7 @@ namespace ABCWonderworld.Screens
         private void Update()
         {
             if (_startDsp < 0 || _accompaniment == null) return;
-            if (!IsPlaying && _pausedAt < 0 && !SongFinished && AudioSettings.dspTime > _startDsp + 0.5)
+            if (!IsPlaying && !_paused && !SongFinished && AudioSettings.dspTime > _startDsp + 0.5)
             {
                 SongFinished = true;
                 foreach (LetterCharacter d in _dancers) d.Play(CharacterState.Celebrate);
@@ -205,7 +214,7 @@ namespace ABCWonderworld.Screens
                         _letters[idx].color = S.Catalog.CharacterFor(l)?.primaryColor ?? Color.red;
                         _letters[idx].transform.localScale = Vector3.one * 1.35f;
                         HighlightedLetters = Mathf.Max(HighlightedLetters, idx + 1);
-                        S.Progress.RecordExposure(l.id, ActivityType.Music);
+                        S.Progress.RecordExposure(l.id, ActivityType.Music, logEvent: false);
                         if (idx % 4 == 0) Dance();
                     }
                     else Dance();

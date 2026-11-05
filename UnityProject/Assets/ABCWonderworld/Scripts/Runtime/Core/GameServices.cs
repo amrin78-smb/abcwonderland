@@ -63,7 +63,9 @@ namespace ABCWonderworld.Core
             if (existing == null)
             {
                 var go = new GameObject("[ABC Wonderworld Services]");
-                existing = go.AddComponent<ApplicationBootstrapper>();
+                ApplicationBootstrapper.SuppressStartFlow = true;
+                try { existing = go.AddComponent<ApplicationBootstrapper>(); }
+                finally { ApplicationBootstrapper.SuppressStartFlow = false; }
             }
             existing.Initialize(startFlow: false);
             if (Current == null) throw new InvalidOperationException("Bootstrap failed");

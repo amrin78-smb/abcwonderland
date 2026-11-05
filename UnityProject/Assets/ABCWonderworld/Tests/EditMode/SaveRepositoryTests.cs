@@ -79,6 +79,22 @@ namespace ABCWonderworld.Tests
         }
 
         [Test]
+        public void SaveAfterBackupRecoveryDoesNotOverwriteTheGoodBackup()
+        {
+            _repo.Save(Sample());
+            _repo.Save(Sample());
+            File.WriteAllText(_repo.MainPath, "{\"schemaVersion\":1, \"rewa");
+            LogAssert.Expect(LogType.Warning, new System.Text.RegularExpressions.Regex("Preserved unreadable save"));
+            SaveData d = _repo.Load(out _);
+            Assert.IsFalse(File.Exists(_repo.MainPath), "the corrupt main is set aside after recovery");
+            d.rewards.wonderStars = 13;
+            Assert.IsTrue(_repo.Save(d));
+            StringAssert.Contains("\"wonderStars\":12", File.ReadAllText(_repo.BackupPath), "backup is still the last good save");
+            Assert.That(_repo.Load(out SaveLoadReport r).rewards.wonderStars, Is.EqualTo(13));
+            Assert.That(r.Outcome, Is.EqualTo(SaveLoadOutcome.Loaded));
+        }
+
+        [Test]
         public void GarbageEverywhereStartsFreshWithoutThrowing()
         {
             File.WriteAllText(_repo.MainPath, "\0\0garbage");

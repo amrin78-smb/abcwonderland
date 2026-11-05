@@ -92,6 +92,7 @@ namespace ABCWonderworld.Screens
             Color col = S.Catalog.CharacterFor(l)?.primaryColor ?? skin.primary;
             Picker = UiFactory.Rect("Picker", _ui);
             UiFactory.Place(Picker, new Vector2(0.5f, 0), new Vector2(0, 150), new Vector2(1500, 250));
+            ScaleToFit.Add(Picker, new Vector2(1500, 250), new Vector2(40, 0));
             Image bg = UiFactory.Image("Bg", Picker, skin.rounded, new Color(1, 1, 1, 0.92f));
             UiFactory.Stretch(bg.rectTransform);
             UiFactory.Shadow(bg.transform, 250);
@@ -113,7 +114,7 @@ namespace ABCWonderworld.Screens
                 Transform t = b.transform;
                 t.localScale = Vector3.zero;
                 float delay = i * 0.06f;
-                Tween.Run(this, 0.35f + delay, k => t.localScale = Vector3.one * Tween.EaseOutBack(Mathf.Clamp01((k * (0.35f + delay) - delay) / 0.35f)));
+                Tween.Run(this, 0.35f + delay, k => { if (t != null) t.localScale = Vector3.one * Tween.EaseOutBack(Mathf.Clamp01((k * (0.35f + delay) - delay) / 0.35f)); });
             }
         }
 
